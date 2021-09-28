@@ -1,0 +1,16 @@
+{
+  "packages": [
+    "libs/*"
+  ],
+  "version": "0.0.35",
+  "command": {
+    "version": {
+      "allowBranch": [
+        "hotfix/*",
+        "release/*"
+      ],
+      "conventionalCommits": true,
+      "message": "chore: release %s"
+    }
+  }
+}

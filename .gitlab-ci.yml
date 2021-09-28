@@ -1,0 +1,46 @@
+image: node:14
+
+stages:
+  - test
+  - release
+  - deploy
+
+before_script:
+  - npm install
+  - npm install --save  @babel/cli @babel/preset-typescript
+
+cache:
+  paths:
+    - node_modules/
+
+unit:
+  stage: test
+  script:
+    - npm run test
+  except:
+    - master
+
+publish:
+  stage: release
+  before_script:
+    - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+  script:
+    - npm run build:libs
+    - npm publish dist/common
+    # - npm publish dist/utils
+  only:
+    - tags
+
+pages:
+  stage: deploy
+  script:
+    - npm run test
+    - npm run build
+    # - mkdir public/
+    - mv coverage/ public/coverage/
+    - mv dist/app/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
