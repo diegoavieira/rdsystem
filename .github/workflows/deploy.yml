@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
+      - run: npm install --save @babel/cli @babel/preset-typescript
       - run: npm run test
       - run: npm run build:app
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.6
+      - uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
           branch: gh-pages
           folder: dist/app
