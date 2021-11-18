@@ -1,8 +1,10 @@
 # React Design System
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diegoavieira/rdsystem/blob/master/LICENSE)
-[![pipeline status](https://github.com/diegoavieira/rdsystem/badges/master/pipeline.svg)](https://github.com/diegoavieira/rdsystem/commits/master)
-[![coverage report](https://github.com/diegoavieira/rdsystem/badges/master/coverage.svg)](https://diegoavieira.github.io/rdsystem/coverage/index.html)
+
+<!-- [![pipeline status](https://github.com/diegoavieira/rdsystem/badges/master/pipeline.svg)](https://github.com/diegoavieira/rdsystem/commits/master)
+[![coverage report](https://github.com/diegoavieira/rdsystem/badges/master/coverage.svg)](https://diegoavieira.github.io/rdsystem/coverage/index.html) -->
+
 [![npm downloads](https://img.shields.io/npm/dm/@rdsystem/common.svg)](https://www.npmjs.com/package/@rdsystem/common)
 [![npm latest package](https://img.shields.io/npm/v/@rdsystem/common/latest.svg)](https://www.npmjs.com/package/@rdsystem/common)
 
