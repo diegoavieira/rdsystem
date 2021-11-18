@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrdsystem=self.webpackChunkrdsystem||[]).push([[726],{6402:(e,t,n)=>{n.r(t),n.d(t,{default:()=>d});var r=n(7294),s=n(3482),a=n(5325),c=(0,s.Z)((function(){return{root:{paddingTop:0}}}))(a.y9);const d=function(){return r.createElement(c,null,r.createElement(a.a9,{file:"src/docs/getting-started/getting-started.md"}))}}}]);
