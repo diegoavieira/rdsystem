@@ -1,5 +1,21 @@
-export default interface RdsHeaderProps {
-  title: string;
+import { WithStyles } from '@material-ui/core/styles/withStyles';
+import RdsHeaderStyles from './RdsHeader.styles';
+
+export default interface RdsHeaderProps extends WithStyles<typeof RdsHeaderStyles> {
+  /**
+   * Children.
+   */
+  children?: JSX.Element | JSX.Element[];
+  /**
+   * Fixed at the top.
+   */
   fixed?: boolean;
-  color?: string;
+  /**
+   * Default is `primary`.
+   */
+  color?: 'inherit' | 'primary' | 'secondary' | 'default' | 'transparent';
+  /**
+   * Show menu button and toogle RdsDrawer.
+   */
+  onToogle?: () => void;
 }

@@ -1,14 +1,9 @@
 {
-  "packages": [
-    "libs/*"
-  ],
-  "version": "0.0.35",
+  "packages": ["libs/*"],
+  "version": "1.0.0",
   "command": {
     "version": {
-      "allowBranch": [
-        "hotfix/*",
-        "release/*"
-      ],
+      "allowBranch": ["hotfix/*", "release/*"],
       "conventionalCommits": true,
       "message": "chore: release %s"
     }

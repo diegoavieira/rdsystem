@@ -1,6 +1,6 @@
 {
   "name": "@rdsystem/common",
-  "version": "0.0.35",
+  "version": "1.0.0",
   "description": "This library is part of project React Design System",
   "author": "Diego Adilson Vieira <diegoavieira@gmail.com>",
   "license": "MIT",
@@ -8,12 +8,17 @@
   "types": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/diegoavieira/rdsystem.git"
+    "url": "https://github.com/diegoavieira/rdsystem.git"
   },
-  "homepage": "https://diegoavieira.gitlab.io/rdsystem",
-  "bugs": "https://gitlab.com/diegoavieira/rdsystem/issues",
+  "homepage": "https://diegoavieira.github.io/rdsystem",
+  "bugs": "https://github.com/diegoavieira/rdsystem/issues",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "highlight.js": "^11.3.1",
+    "marked": "^3.0.7"
   },
   "peerDependencies": {
     "@material-ui/core": "^4.12.2",

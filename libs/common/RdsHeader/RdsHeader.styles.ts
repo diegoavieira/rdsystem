@@ -1,13 +1,16 @@
-import { makeStyles } from '@material-ui/core';
+import { createStyles, Theme } from '@material-ui/core';
 
-const RdsHeaderStyles = makeStyles(
-  (theme) => ({
+const RdsHeaderStyles = (theme: Theme) =>
+  createStyles({
+    root: {
+      zIndex: theme.zIndex.drawer + 1
+    },
+    toogle: {
+      marginRight: theme.spacing(0.5)
+    },
     title: {
       flexGrow: 1
-    },
-    fixed: theme.mixins.toolbar
-  }),
-  { classNamePrefix: 'RdsHeader' }
-);
+    }
+  });
 
 export default RdsHeaderStyles;

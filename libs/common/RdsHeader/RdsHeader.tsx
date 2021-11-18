@@ -1,23 +1,35 @@
 import React, { FC } from 'react';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import RdsHeaderStyles from './RdsHeader.styles';
+import { AppBar, Toolbar as MuiToolbar, IconButton, withStyles, createStyles, Theme } from '@material-ui/core';
+import { Menu as MenuIcon } from '@material-ui/icons';
 import RdsHeaderProps from './RdsHeader.props';
+import RdsHeaderStyles from './RdsHeader.styles';
 
-const RdsHeader: FC<RdsHeaderProps> = ({ title, fixed, color }): JSX.Element => {
-  const styles = RdsHeaderStyles();
+const Toolbar = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      minHeight: 56,
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2)
+    }
+  })
+)(MuiToolbar);
 
+/**
+ * [RdsHeader Examples](https://diegoavieira.github.io/rdsystem/common/rds-header)
+ */
+const RdsHeader: FC<RdsHeaderProps> = ({ children, fixed, color, onToogle, classes }) => {
   return (
-    <>
-      <AppBar data-testid="rdsheader" position={fixed ? 'fixed' : 'static'}>
-        <Toolbar color={color}>
-          <Typography variant="h6" className={styles.title}>
-            {title}
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      {fixed && <div className={styles.fixed} />}
-    </>
+    <AppBar className={classes.root} position={fixed ? 'fixed' : 'static'} color={color}>
+      <Toolbar>
+        {onToogle && (
+          <IconButton edge="start" className={classes.toogle} color="inherit" onClick={onToogle}>
+            <MenuIcon />
+          </IconButton>
+        )}
+        {children}
+      </Toolbar>
+    </AppBar>
   );
 };
 
-export default RdsHeader;
+export default withStyles(RdsHeaderStyles, { name: 'RdsHeader' })(RdsHeader);

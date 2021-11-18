@@ -9,15 +9,23 @@ module.exports = {
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   collectCoverage: true,
-  collectCoverageFrom: ['<rootDir>/src/**/*.tsx', '<rootDir>/libs/**/*.tsx', '!<rootDir>/src/index.tsx'],
-  coverageReporters: ['text-summary', 'html'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.tsx',
+    '<rootDir>/libs/**/*.tsx',
+    '!<rootDir>/src/index.tsx',
+    '!<rootDir>/src/docs/**/*'
+  ],
+  coverageReporters: ['html', 'text', 'text-summary'],
   coverageThreshold: {
     global: {
-      branches: 80,
-      functions: 80,
-      lines: 80,
-      statements: 80
+      branches: 50,
+      functions: 50,
+      lines: 50,
+      statements: 50
     }
   },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' })
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+    '\\.(scss|css)$': 'identity-obj-proxy'
+  }
 };

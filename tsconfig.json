@@ -11,6 +11,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
@@ -18,6 +21,8 @@
       "@components/*": ["src/components/*"],
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"],
+      "@docs": ["src/docs"],
+      "@docs/*": ["src/docs/*"],
       "@rdsystem/common": ["libs/common"],
       "@rdsystem/common/*": ["libs/common/*"]
     }
