@@ -9,10 +9,11 @@ const dist = path.join(__dirname, '../dist');
 
 const run = async () => {
   try {
+    const filesMd = glob.sync('**/*.md', { cwd: libs });
     const pkgJson = glob.sync('**/package.json', { cwd: libs });
     const license = glob.sync('**/LICENSE', { cwd: libs });
 
-    const files = [...pkgJson, ...license];
+    const files = [...filesMd, ...pkgJson, ...license];
 
     await Promise.all(files.map((file) => fs.copy(path.resolve(libs, file), path.resolve(dist, file))));
 
