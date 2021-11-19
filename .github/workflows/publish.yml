@@ -1,7 +1,7 @@
 name: publish
 
 on:
-  release:
+  tag:
     types: [created]
 
 jobs:
