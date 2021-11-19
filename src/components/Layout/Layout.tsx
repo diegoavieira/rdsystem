@@ -5,6 +5,8 @@ import { Typography } from '@material-ui/core';
 import { useTheme, useMediaQuery } from '@material-ui/core';
 import LayoutProps from './Layout.props';
 
+const production = process.env.NODE_ENV === 'production';
+
 const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -26,7 +28,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
             </Typography>
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toogle={toogle} onToogle={onToogle}>
-            <RdsNav items={drawerNavItems} toogle={toogle} />
+            <RdsNav nested={production ? 1 : 0} items={drawerNavItems} toogle={toogle} />
           </RdsDrawer>
           <RdsMain>
             <Suspense fallback="Loading...">
