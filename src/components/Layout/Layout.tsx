@@ -1,5 +1,5 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { HashRouter, Switch } from 'react-router-dom';
 import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme } from '@rdsystem/common';
 import { Typography } from '@material-ui/core';
 import { useTheme, useMediaQuery } from '@material-ui/core';
@@ -19,7 +19,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
   }, [isMobile]);
 
   return (
-    <BrowserRouter basename={production ? '/rdsystem' : '/'}>
+    <HashRouter basename={production ? '/rdsystem' : '/'}>
       <RdsTheme productionPrefix="rds" theme={{ palette: { type: 'light' } }}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader fixed onToogle={onToogle}>
@@ -37,7 +37,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
           </RdsMain>
         </RdsContent>
       </RdsTheme>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
