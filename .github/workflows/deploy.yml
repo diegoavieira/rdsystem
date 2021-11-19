@@ -6,28 +6,14 @@ on:
       - master
 
 jobs:
-  install:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm install --save @babel/cli @babel/preset-typescript
-
-  test:
-    runs-on: ubuntu-latest
-    needs: [install]
-
-    steps:
-      - uses: actions/checkout@v2
       - run: npm run test
-
-  build:
-    runs-on: ubuntu-latest
-    needs: [test]
-
-    steps:
-      - uses: actions/checkout@v2
       - run: npm run build:app
       - run: cp -r coverage/ dist/app/
       - run: cp dist/app/index.html dist/app/404.html
