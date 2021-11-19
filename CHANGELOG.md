@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/diegoavieira/rdsystem/compare/v1.0.2...v1.0.3) (2021-11-19)
+
+
+### Bug Fixes
+
+* adjustments ([43deb29](https://github.com/diegoavieira/rdsystem/commit/43deb29e4c214bdd67c0b96e8f11d59bb405c986))
+
+
+
+
+
 ## [1.0.2](https://github.com/diegoavieira/rdsystem/compare/v1.0.1...v1.0.2) (2021-11-19)
 
 
