@@ -1,8 +1,9 @@
 name: publish
 
 on:
-  tags:
-    types: [created]
+  push:
+    tags:
+      - '*'
 
 jobs:
   deploy:
