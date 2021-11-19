@@ -1,8 +1,9 @@
 name: publish
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - '*'
 
 jobs:
   deploy:
@@ -17,6 +18,7 @@ jobs:
 
       - run: npm install
       - run: npm install --save @babel/cli @babel/preset-typescript
+      - run: npm run test
       - run: npm run build:libs
       - run: npm publish dist/common
         # - run: npm publish dist/utils
