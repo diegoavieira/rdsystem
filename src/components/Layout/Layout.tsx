@@ -5,8 +5,6 @@ import { Typography } from '@material-ui/core';
 import { useTheme, useMediaQuery } from '@material-ui/core';
 import LayoutProps from './Layout.props';
 
-const production = process.env.NODE_ENV === 'production';
-
 const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -19,7 +17,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
   }, [isMobile]);
 
   return (
-    <HashRouter basename={production ? '/rdsystem' : '/'}>
+    <HashRouter>
       <RdsTheme productionPrefix="rds" theme={{ palette: { type: 'light' } }}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader fixed onToogle={onToogle}>
@@ -28,7 +26,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
             </Typography>
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toogle={toogle} onToogle={onToogle}>
-            <RdsNav nested={production ? 1 : 0} items={drawerNavItems} toogle={toogle} />
+            <RdsNav items={drawerNavItems} toogle={toogle} />
           </RdsDrawer>
           <RdsMain>
             <Suspense fallback="Loading...">
