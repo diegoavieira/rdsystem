@@ -48,18 +48,7 @@ const drawerNavItems: RdsNavProps['items'] = [
           {
             key: 'rds-container',
             title: 'RdsContainer',
-            items: [
-              {
-                key: 'test',
-                title: 'RdsContentsss',
-                path: '/common/rds-container/test'
-              },
-              {
-                key: 'test1',
-                title: 'RdsContainersss',
-                path: '/common/rds-container/test1'
-              }
-            ]
+            path: '/common/rds-container'
           }
         ]
       },
@@ -87,8 +76,6 @@ const App = () => (
     <Route path="/layout">
       <LayoutPage />
     </Route>
-    <Route path="/common/rds-content">/common/rds-content</Route>
-    <Route path="/common/rds-container/:test">/common/rds-container/test</Route>
   </Layout>
 );
 

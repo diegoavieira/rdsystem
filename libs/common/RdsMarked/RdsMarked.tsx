@@ -16,7 +16,7 @@ const RdsSandbox = withStyles(() => ({
 /**
  * [RdsMarked Examples](https://diegoavieira.github.io/rdsystem/common/rds-marked)
  */
-const RdsMarked: FC<RdsMarkedProps> = ({ file, classes, sandboxes = {} }) => {
+const RdsMarked: FC<RdsMarkedProps> = ({ file, classes, sandboxes }) => {
   const [elements, setElements] = useState<JSX.Element[]>([]);
 
   const split = (markdown: string) => {
@@ -43,7 +43,7 @@ const RdsMarked: FC<RdsMarkedProps> = ({ file, classes, sandboxes = {} }) => {
           if (/^"sandbox": "(.*)"/.test(content)) {
             const { sandbox, bg, frame } = JSON.parse(`{${content}}`);
 
-            if (sandboxes[sandbox]) {
+            if (sandboxes && sandboxes[sandbox]) {
               const demoExt = sandbox.match(/\.[a-z]+$/i)[0].replace('.', '');
               const SandboxDemo = sandboxes[sandbox].demo;
 
