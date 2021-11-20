@@ -9,7 +9,7 @@ import 'highlight.js/styles/vs2015.css';
 
 const RdsSandbox = withStyles(() => ({
   root: {
-    marginBottom: '1rem'
+    marginBottom: 16
   }
 }))(MuiRdsSandbox);
 

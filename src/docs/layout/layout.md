@@ -1,4 +1,4 @@
-#### Layout
+# Layout
 
 The component layout is responsible for the application structure. It should contain the components RdsTheme, RdsContent, RdsHeader, RdsDrawer and RdsMain. It can be created according to the example:
 

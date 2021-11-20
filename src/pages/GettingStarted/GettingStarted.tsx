@@ -1,12 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core';
-import { RdsContainer as MuiRdsContainer, RdsMarked } from '@rdsystem/common';
-
-const RdsContainer = withStyles(() => ({
-  root: {
-    paddingTop: 0
-  }
-}))(MuiRdsContainer);
+import { RdsContainer, RdsMarked } from '@rdsystem/common';
 
 const GettingStarted = () => {
   return (
