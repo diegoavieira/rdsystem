@@ -87,18 +87,21 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
   const nestedItems = (items: RdsNavItemProps['item'][]) => {
     return (
       <List disablePadding>
-        {items.map((item) => (
-          <RdsNavItem
-            key={item.key}
-            item={item}
-            classes={classes}
-            nested={nested + 1}
-            expanded={item.key === expandedNested}
-            onExpand={onExpandNested}
-            toogle={toogle}
-            onClose={onClosePopover}
-          />
-        ))}
+        {items.map(
+          (item) =>
+            !item.hidden && (
+              <RdsNavItem
+                key={item.key}
+                item={item}
+                classes={classes}
+                nested={nested + 1}
+                expanded={item.key === expandedNested}
+                onExpand={onExpandNested}
+                toogle={toogle}
+                onClose={onClosePopover}
+              />
+            )
+        )}
       </List>
     );
   };

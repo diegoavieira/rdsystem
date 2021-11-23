@@ -36,7 +36,7 @@ const RdsMarked: FC<RdsMarkedProps> = ({ file, classes, sandboxes }) => {
   useEffect(() => {
     try {
       const fetchFile = async () => {
-        const data = await fetch(file);
+        const data = await fetch(`${window.location.origin}/${file}`);
         const markdown = await data.text();
 
         const contents = split(markdown).map((content, i) => {

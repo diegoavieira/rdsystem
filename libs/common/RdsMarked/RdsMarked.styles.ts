@@ -4,7 +4,12 @@ const RdsMarkedStyles = (theme: Theme) =>
   createStyles({
     root: {},
     element: {
-      '& h1': Object.assign(theme.typography.h3, { fontSize: 40, margin: '16px 0' }),
+      '& h1': Object.assign(theme.typography.h3, {
+        fontSize: 40,
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexFlow: 'row wrap'
+      }),
       '& h2': Object.assign(theme.typography.h4, { fontSize: 30, margin: '40px 0 16px' }),
       '& h3': Object.assign(theme.typography.h5, { margin: '40px 0 16px' }),
       '& h4': Object.assign(theme.typography.h6, { margin: '32px 0 16px' }),
@@ -20,6 +25,13 @@ const RdsMarkedStyles = (theme: Theme) =>
         '& code.hljs': {
           padding: theme.spacing(2),
           borderRadius: theme.shape.borderRadius
+        }
+      },
+      '& a': {
+        color: theme.palette.secondary.main,
+        textDecoration: 'none',
+        '&:hover': {
+          textDecoration: 'underline'
         }
       }
     }
