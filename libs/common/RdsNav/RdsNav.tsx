@@ -38,30 +38,38 @@ const RdsNav: FC<RdsNavProps> = ({
 
   return (
     <nav className={classes.root}>
-      {itemsList.map((itemList) => (
-        <List
-          key={itemList.key}
-          className={classes.list}
-          subheader={
-            itemList.title ? <ListSubheader className={classes.subheader}>{itemList.title}</ListSubheader> : undefined
-          }
-        >
-          {itemList.items &&
-            itemList.items.map((item) => (
-              <RdsNavItemComponent
-                document={document}
-                key={item.key}
-                item={item}
-                expanded={item.key === expanded}
-                onExpand={onExpand}
-                toogle={toogle}
-                opened={item.key === opened}
-                onOpen={onOpen}
-                onClose={onClose}
-              />
-            ))}
-        </List>
-      ))}
+      {itemsList.map(
+        (itemList) =>
+          !itemList.hidden && (
+            <List
+              key={itemList.key}
+              className={classes.list}
+              subheader={
+                itemList.title ? (
+                  <ListSubheader className={classes.subheader}>{itemList.title}</ListSubheader>
+                ) : undefined
+              }
+            >
+              {itemList.items &&
+                itemList.items.map(
+                  (item) =>
+                    !item.hidden && (
+                      <RdsNavItemComponent
+                        document={document}
+                        key={item.key}
+                        item={item}
+                        expanded={item.key === expanded}
+                        onExpand={onExpand}
+                        toogle={toogle}
+                        opened={item.key === opened}
+                        onOpen={onOpen}
+                        onClose={onClose}
+                      />
+                    )
+                )}
+            </List>
+          )
+      )}
     </nav>
   );
 };

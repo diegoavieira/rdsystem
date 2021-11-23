@@ -5,7 +5,7 @@ import { createGenerateClassName, createTheme, StylesProvider, ThemeProvider } f
 /**
  * [RdsTheme Examples](https://diegoavieira.github.io/rdsystem/common/rds-theme)
  */
-const RdsTheme: FC<RdsThemeProps> = ({ children, theme, productionPrefix, seed }): JSX.Element => {
+const RdsTheme: FC<RdsThemeProps> = ({ children, theme, productionPrefix, seed }) => {
   return (
     <ThemeProvider theme={createTheme(theme)}>
       <StylesProvider generateClassName={createGenerateClassName({ productionPrefix, seed })}>
