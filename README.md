@@ -23,6 +23,18 @@ Unit testing coverage can be found in the directory `/coverage/index.html` or [d
 npm run test
 ```
 
+To test a single file, install globa the `jest`:
+
+```sh
+npm i -g jest
+```
+
+And run the command with the spec file:
+
+```sh
+jest --coverage=false libs/components/RdsContainer/RdsContainer.spec.tsx
+```
+
 ## Build
 
 Build is run with `.github/workflows`.
