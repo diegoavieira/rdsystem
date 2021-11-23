@@ -5,7 +5,7 @@ import RdsContentStyles from './RdsContent.styles';
 import clsx from 'clsx';
 
 /**
- * [RdsContent Examples](https://diegoavieira.github.io/rdsystem/common/rds-content)
+ * [RdsContent Examples](https://diegoavieira.github.io/rdsystem/components/rds-content)
  */
 const RdsContent: FC<RdsContentProps> = ({ children, hasDrawer, hasHeaderFixed, hasFooter, classes }) => {
   return (

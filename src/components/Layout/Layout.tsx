@@ -1,6 +1,6 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme } from '@rdsystem/common';
+import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme } from '@rdsystem/components';
 import { Typography } from '@material-ui/core';
 import { useTheme, useMediaQuery } from '@material-ui/core';
 import LayoutProps from './Layout.props';

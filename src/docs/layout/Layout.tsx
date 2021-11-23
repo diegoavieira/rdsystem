@@ -2,8 +2,8 @@ import React, { FC, Suspense, useEffect, useState } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { Typography } from '@material-ui/core';
-import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme, RdsContainer } from '@rdsystem/common';
-import RdsNavProps from '@rdsystem/common/RdsNav/RdsNav.props';
+import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme, RdsContainer } from '@rdsystem/components';
+import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
   PlayCircleOutlineOutlined as PlayCircleOutlineOutlinedIcon,
   DashboardOutlined as DashboardOutlinedIcon

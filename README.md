@@ -4,8 +4,6 @@
 [![test workflow](https://github.com/diegoavieira/rdsystem/actions/workflows/test.yml/badge.svg)](https://github.com/diegoavieira/rdsystem/actions/workflows/test.yml)
 [![publish workflow](https://github.com/diegoavieira/rdsystem/actions/workflows/publish.yml/badge.svg)](https://github.com/diegoavieira/rdsystem/actions/workflows/publish.yml)
 [![deploy workflow](https://github.com/diegoavieira/rdsystem/actions/workflows/deploy.yml/badge.svg)](https://github.com/diegoavieira/rdsystem/actions/workflows/deploy.yml)
-[![npm downloads](https://img.shields.io/npm/dm/@rdsystem/common.svg)](https://www.npmjs.com/package/@rdsystem/common)
-[![npm latest package](https://img.shields.io/npm/v/@rdsystem/common/latest.svg)](https://www.npmjs.com/package/@rdsystem/common)
 
 Access the [documentation](https://diegoavieira.github.io/rdsystem) for more information.
 

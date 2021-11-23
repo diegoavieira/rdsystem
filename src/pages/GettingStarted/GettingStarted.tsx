@@ -1,5 +1,5 @@
 import React from 'react';
-import { RdsContainer } from '@rdsystem/common';
+import { RdsContainer } from '@rdsystem/components';
 import { Marked } from '@components';
 
 const GettingStarted = () => {

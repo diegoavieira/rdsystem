@@ -5,7 +5,7 @@ import RdsContainerStyles from './RdsContainer.styles';
 import clsx from 'clsx';
 
 /**
- * [RdsContainer Examples](https://diegoavieira.github.io/rdsystem/common/rds-container)
+ * [RdsContainer Examples](https://diegoavieira.github.io/rdsystem/components/rds-container)
  */
 const RdsContainer: FC<RdsContainerProps> = ({ children, maxWidth, disableGutters, classes }) => {
   return (
