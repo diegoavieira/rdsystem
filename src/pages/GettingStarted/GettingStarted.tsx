@@ -1,10 +1,11 @@
 import React from 'react';
-import { RdsContainer, RdsMarked } from '@rdsystem/common';
+import { RdsContainer } from '@rdsystem/common';
+import { Marked } from '@components';
 
 const GettingStarted = () => {
   return (
     <RdsContainer>
-      <RdsMarked file="src/docs/getting-started/getting-started.md" />
+      <Marked file="src/docs/getting-started/getting-started.md" />
     </RdsContainer>
   );
 };

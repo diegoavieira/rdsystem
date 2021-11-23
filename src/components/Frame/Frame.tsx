@@ -2,13 +2,10 @@ import React, { cloneElement, FC, ReactElement, useEffect, useMemo, useRef, useS
 import { createPortal } from 'react-dom';
 import { create } from 'jss';
 import { withStyles, jssPreset, StylesProvider } from '@material-ui/core';
-import RdsFrameProps from './RdsFrame.props';
-import RdsFrameStyles from './RdsFrame.styles';
+import FrameProps from './Frame.props';
+import FrameStyles from './Frame.styles';
 
-/**
- * [RdsFrame Examples](https://diegoavieira.github.io/rdsystem/common/rds-frame)
- */
-const RdsFrame: FC<RdsFrameProps> = ({ classes, children }) => {
+const Frame: FC<FrameProps> = ({ classes, children }) => {
   const ref = useRef<HTMLIFrameElement | null>(null);
   const [document, setDocument] = useState<Document>();
 
@@ -45,4 +42,4 @@ const RdsFrame: FC<RdsFrameProps> = ({ classes, children }) => {
   );
 };
 
-export default withStyles(RdsFrameStyles, { name: 'RdsFrame' })(RdsFrame);
+export default withStyles(FrameStyles, { name: 'Frame' })(Frame);

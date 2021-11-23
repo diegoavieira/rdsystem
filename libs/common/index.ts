@@ -16,17 +16,8 @@ export * from './RdsMain';
 export { default as RdsTheme } from './RdsTheme';
 export * from './RdsTheme';
 
-export { default as RdsMarked } from './RdsMarked';
-export * from './RdsMarked';
-
-export { default as RdsSandbox } from './RdsSandbox';
-export * from './RdsSandbox';
-
 export { default as RdsNav } from './RdsNav';
 export * from './RdsNav';
 
 export { default as RdsNavItem } from './RdsNavItem';
 export * from './RdsNavItem';
-
-export { default as RdsFrame } from './RdsFrame';
-export * from './RdsFrame';

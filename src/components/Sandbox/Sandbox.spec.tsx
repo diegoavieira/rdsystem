@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import RdsMarked from './RdsMarked';
+import Sandbox from './Sandbox';
 
-describe('<RdsMarked />', () => {
+describe('<Sandbox />', () => {
   test('should has rendered', () => {
-    render(<RdsMarked file="README.md" />);
+    render(<Sandbox demo={<p></p>} code={<pre></pre>} />);
   });
 });

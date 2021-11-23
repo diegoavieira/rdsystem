@@ -1,6 +1,6 @@
 import { createStyles } from '@material-ui/core';
 
-const RdsFrameStyles = () =>
+const FrameStyles = () =>
   createStyles({
     root: {
       width: '100%',
@@ -9,4 +9,4 @@ const RdsFrameStyles = () =>
     }
   });
 
-export default RdsFrameStyles;
+export default FrameStyles;

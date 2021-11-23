@@ -1,6 +1,6 @@
 import { createStyles, Theme } from '@material-ui/core';
 
-const RdsMarkedStyles = (theme: Theme) =>
+const MarkedStyles = (theme: Theme) =>
   createStyles({
     root: {},
     element: {
@@ -37,4 +37,4 @@ const RdsMarkedStyles = (theme: Theme) =>
     }
   });
 
-export default RdsMarkedStyles;
+export default MarkedStyles;

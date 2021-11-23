@@ -1,8 +1,10 @@
 import { createStyles, Theme } from '@material-ui/core';
 
-const RdsSandboxStyles = (theme: Theme) =>
+const SandboxStyles = (theme: Theme) =>
   createStyles({
-    root: {},
+    root: {
+      marginBottom: 16
+    },
     demo: {
       display: 'flex'
     },
@@ -22,4 +24,4 @@ const RdsSandboxStyles = (theme: Theme) =>
     }
   });
 
-export default RdsSandboxStyles;
+export default SandboxStyles;

@@ -1,22 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
 import { withStyles } from '@material-ui/core';
-import RdsMarkedProps from './RdsMarked.props';
-import RdsMarkedStyles from './RdsMarked.styles';
-import MuiRdsSandbox from '../RdsSandbox';
+import MarkedProps from './Marked.props';
+import MarkedStyles from './Marked.styles';
+import { Sandbox } from '@components';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
 
-const RdsSandbox = withStyles(() => ({
-  root: {
-    marginBottom: 16
-  }
-}))(MuiRdsSandbox);
-
-/**
- * [RdsMarked Examples](https://diegoavieira.github.io/rdsystem/common/rds-marked)
- */
-const RdsMarked: FC<RdsMarkedProps> = ({ file, classes, sandboxes }) => {
+const Marked: FC<MarkedProps> = ({ file, classes, sandboxes }) => {
   const [elements, setElements] = useState<JSX.Element[]>([]);
 
   const split = (markdown: string) => {
@@ -55,7 +46,7 @@ const RdsMarked: FC<RdsMarkedProps> = ({ file, classes, sandboxes }) => {
               );
 
               return (
-                <RdsSandbox
+                <Sandbox
                   key={i}
                   demo={<SandboxDemo />}
                   code={<SandboxCode />}
@@ -81,4 +72,4 @@ const RdsMarked: FC<RdsMarkedProps> = ({ file, classes, sandboxes }) => {
   return <div className={classes.root}>{[...elements]}</div>;
 };
 
-export default withStyles(RdsMarkedStyles, { name: 'RdsMarked' })(RdsMarked);
+export default withStyles(MarkedStyles, { name: 'Marked' })(Marked);
