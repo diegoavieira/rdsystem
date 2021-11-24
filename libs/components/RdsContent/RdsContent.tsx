@@ -10,6 +10,7 @@ import clsx from 'clsx';
 const RdsContent: FC<RdsContentProps> = ({ children, hasDrawer, hasHeaderFixed, hasFooter, classes }) => {
   return (
     <div
+      data-testid="rds-content"
       className={clsx(classes.root, {
         [classes.hasDrawer]: hasDrawer,
         [classes.hasHeaderFixed]: hasHeaderFixed,
