@@ -8,7 +8,11 @@ import clsx from 'clsx';
  * [RdsMain Examples](https://diegoavieira.github.io/rdsystem/components/rds-main)
  */
 const RdsMain: FC<RdsMainProps> = ({ children, fixed, classes }) => {
-  return <main className={clsx(classes.root, { [classes.fixed]: fixed })}>{children}</main>;
+  return (
+    <main data-testid="rds-main" className={clsx(classes.root, { [classes.fixed]: fixed })}>
+      {children}
+    </main>
+  );
 };
 
 export default withStyles(RdsMainStyles, { name: 'RdsMain' })(RdsMain);
