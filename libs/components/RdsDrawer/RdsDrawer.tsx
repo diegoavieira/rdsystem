@@ -16,6 +16,7 @@ const RdsDrawer: FC<RdsDrawerProps> = ({ hasHeaderFixed, onToogle, toogle, isMob
 
   return (
     <Drawer
+      data-testid="rds-drawer"
       container={document && document.body}
       className={clsx(classes.root, !isMobile ? { [classes.open]: toogle, [classes.close]: !toogle } : classes.mobile)}
       variant={variant}

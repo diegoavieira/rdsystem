@@ -9,7 +9,7 @@ export default interface RdsDrawerProps extends WithStyles<typeof RdsDrawerStyle
   /**
    * Children.
    */
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element;
   /**
    * Define if is mobile.
    */
