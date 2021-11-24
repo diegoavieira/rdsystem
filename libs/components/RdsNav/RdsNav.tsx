@@ -37,7 +37,7 @@ const RdsNav: FC<RdsNavProps> = ({
   }, [nested]);
 
   return (
-    <nav className={classes.root}>
+    <nav data-testid="rds-nav" className={classes.root}>
       {itemsList.map(
         (itemList) =>
           !itemList.hidden && (
