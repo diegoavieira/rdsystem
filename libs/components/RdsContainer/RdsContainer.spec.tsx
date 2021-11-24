@@ -33,4 +33,17 @@ describe('<RdsContainer />', () => {
 
     expect(getByTestId('rds-container').className).toContain('RdsContainer-disableGutters');
   });
+
+  test('should maxWidth prop is lg', () => {
+    global.innerWidth = 960;
+    global.dispatchEvent(new Event('resize'));
+
+    const { getByTestId } = render(
+      <RdsContainer maxWidth="lg">
+        <div />
+      </RdsContainer>
+    );
+
+    expect(getByTestId('rds-container').className).toContain('maxWidthLg');
+  });
 });
