@@ -19,7 +19,7 @@ const Toolbar = withStyles((theme: Theme) =>
  */
 const RdsHeader: FC<RdsHeaderProps> = ({ children, fixed, color, onToogle, classes }) => {
   return (
-    <AppBar className={classes.root} position={fixed ? 'fixed' : 'static'} color={color}>
+    <AppBar data-testid="rds-header" className={classes.root} position={fixed ? 'fixed' : 'static'} color={color}>
       <Toolbar>
         {onToogle && (
           <IconButton edge="start" className={classes.toogle} color="inherit" onClick={onToogle}>
