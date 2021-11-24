@@ -24,7 +24,7 @@ describe('<RdsContainer />', () => {
     expect(getByTestId('rds-container').childElementCount).toBe(2);
   });
 
-  test('should disableGutters prop is true', () => {
+  test('should prop disableGutters to be true', () => {
     const { getByTestId } = render(
       <RdsContainer disableGutters>
         <div />
@@ -34,10 +34,7 @@ describe('<RdsContainer />', () => {
     expect(getByTestId('rds-container').className).toContain('RdsContainer-disableGutters');
   });
 
-  test('should maxWidth prop is lg', () => {
-    global.innerWidth = 960;
-    global.dispatchEvent(new Event('resize'));
-
+  test('should prop maxWidth to be lg', () => {
     const { getByTestId } = render(
       <RdsContainer maxWidth="lg">
         <div />
