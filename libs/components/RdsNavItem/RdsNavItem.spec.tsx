@@ -105,4 +105,11 @@ describe('<RdsNavItem />', () => {
     render(<RdsNavItem item={item} toogle expanded />);
     expect(screen.getByTestId('rds-nav-item')).toBeDefined();
   });
+
+  test('should onClosePopover be called', () => {
+    render(<RdsNavItem item={items[1]} opened />);
+    expect(screen.getByText(/installation/i)).toBeTruthy();
+
+    fireEvent.click(screen.getByTestId('rds-nav-item-popover'));
+  });
 });

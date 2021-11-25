@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, MouseEvent, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import {
   withStyles,
@@ -33,9 +33,9 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
 }) => {
   const history = useHistory();
   const location = useLocation();
-  const ref = useRef(null);
 
   const [expandedNested, setExpandedNested] = useState<string | false>(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const onExpandNested = (item: RdsNavItemProps['item'], newExpanded: boolean) => {
     setExpandedNested(newExpanded ? item.key : false);
@@ -46,10 +46,6 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
     setExpandedNested(locationSplited[nested + 2]);
   }, [nested, location]);
 
-  const onClosePopover = () => {
-    onClose && onClose();
-  };
-
   const onClick = (item: RdsNavItemProps['item']) => {
     if (item.path) {
       history.push(item.path);
@@ -59,12 +55,18 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
     onExpand && onExpand(item, !expanded);
   };
 
-  const onOpenPopover = (item: RdsNavItemProps['item']) => {
+  const onOpenPopover = (event: MouseEvent<HTMLButtonElement>, item: RdsNavItemProps['item']) => {
     if (item.path) {
       history.push(item.path);
     }
 
+    setAnchorEl(event.currentTarget);
     onOpen && onOpen(item);
+  };
+
+  const onClosePopover = () => {
+    onClose && onClose();
+    setAnchorEl(null);
   };
 
   const actived = (item: RdsNavItemProps['item']): boolean => {
@@ -132,8 +134,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
               <IconButton
                 edge="start"
                 className={clsx({ [classes.iconActived]: actived(item) })}
-                onClick={() => onOpenPopover(item)}
-                ref={ref}
+                onClick={(event) => onOpenPopover(event, item)}
               >
                 {item.icon}
               </IconButton>
@@ -147,7 +148,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
             {nestedItems(item.items)}
           </Collapse>
         ) : (
-          <Popover open={!!opened} anchorEl={ref.current} onClose={() => onClosePopover()}>
+          <Popover data-testid="rds-nav-item-popover" open={!!opened} anchorEl={anchorEl} onClose={onClosePopover}>
             {nestedItems(item.items)}
           </Popover>
         ))}
