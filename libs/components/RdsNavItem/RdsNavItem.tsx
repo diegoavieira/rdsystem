@@ -109,6 +109,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
   return (
     <>
       <ListItem
+        data-testid="rds-nav-item"
         className={clsx(classes.root, `${toogle ? 'collapse-' : 'popover-'}${nested}`, {
           [classes.active]: actived(item),
           ['has-icon']: item.icon
