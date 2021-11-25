@@ -27,6 +27,7 @@ const items = [
       {
         key: 'components',
         title: 'Components',
+        icon: <span>icon</span>,
         items: [
           {
             key: 'installation',
@@ -46,11 +47,20 @@ describe('<RdsNav />', () => {
   });
 
   test('should onExpanded be called', () => {
-    render(<RdsNav items={items} toogle />);
+    const { getByTestId, getByText } = render(<RdsNav items={items} toogle />);
 
-    fireEvent.click(screen.getByText(/components/i));
-    expect(screen.getByTestId('rds-nav').contains(screen.getByText(/installation/i))).toBeTruthy();
+    fireEvent.click(getByText(/components/i));
+    expect(getByTestId('rds-nav').contains(getByText(/installation/i))).toBeTruthy();
 
-    fireEvent.click(screen.getByText(/components/i));
+    fireEvent.click(getByText(/components/i));
+  });
+
+  test('should onOpen and onClose be called', () => {
+    render(<RdsNav items={items} />);
+
+    fireEvent.click(screen.getByText(/icon/i));
+    expect(screen.getByText(/installation/i)).toBeTruthy();
+
+    fireEvent.click(screen.getByText(/installation/i));
   });
 });
