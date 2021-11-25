@@ -1,46 +1,46 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import RdsContainer from './RdsContainer';
 
 describe('<RdsContainer />', () => {
   test('should has one child element', () => {
-    const { getByTestId } = render(
+    render(
       <RdsContainer>
         <div />
       </RdsContainer>
     );
 
-    expect(getByTestId('rds-container').childElementCount).toBe(1);
+    expect(screen.getByTestId('rds-container').childElementCount).toBe(1);
   });
 
   test('should has two children elements', () => {
-    const { getByTestId } = render(
+    render(
       <RdsContainer>
         <div />
         <p />
       </RdsContainer>
     );
 
-    expect(getByTestId('rds-container').childElementCount).toBe(2);
+    expect(screen.getByTestId('rds-container').childElementCount).toBe(2);
   });
 
   test('should prop disableGutters to be true', () => {
-    const { getByTestId } = render(
+    render(
       <RdsContainer disableGutters>
         <div />
       </RdsContainer>
     );
 
-    expect(getByTestId('rds-container').className).toContain('RdsContainer-disableGutters');
+    expect(screen.getByTestId('rds-container').className).toContain('RdsContainer-disableGutters');
   });
 
   test('should prop maxWidth to be lg', () => {
-    const { getByTestId } = render(
+    render(
       <RdsContainer maxWidth="lg">
         <div />
       </RdsContainer>
     );
 
-    expect(getByTestId('rds-container').className).toContain('maxWidthLg');
+    expect(screen.getByTestId('rds-container').className).toContain('maxWidthLg');
   });
 });

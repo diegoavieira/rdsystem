@@ -42,17 +42,17 @@ const items = [
 
 describe('<RdsNav />', () => {
   test('should has prop items', () => {
-    const { getByTestId } = render(<RdsNav items={items} />);
-    expect(getByTestId('rds-nav')).toBeDefined();
+    render(<RdsNav items={items} />);
+    expect(screen.getByTestId('rds-nav')).toBeDefined();
   });
 
   test('should onExpanded be called', () => {
-    const { getByTestId, getByText } = render(<RdsNav items={items} toogle />);
+    render(<RdsNav items={items} toogle />);
 
-    fireEvent.click(getByText(/components/i));
-    expect(getByTestId('rds-nav').contains(getByText(/installation/i))).toBeTruthy();
+    fireEvent.click(screen.getByText(/components/i));
+    expect(screen.getByText(/installation/i)).toBeTruthy();
 
-    fireEvent.click(getByText(/components/i));
+    fireEvent.click(screen.getByText(/components/i));
   });
 
   test('should onOpen and onClose be called', () => {
