@@ -7,6 +7,8 @@ import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/vs2015.css';
 
+const production = process.env.NODE_ENV === 'production';
+
 const Marked: FC<MarkedProps> = ({ file, classes, sandboxes }) => {
   const [elements, setElements] = useState<JSX.Element[]>([]);
 
@@ -27,7 +29,7 @@ const Marked: FC<MarkedProps> = ({ file, classes, sandboxes }) => {
   useEffect(() => {
     try {
       const fetchFile = async () => {
-        const data = await fetch(file);
+        const data = await fetch(production ? file : `${window.location.origin}/${file}`);
         const markdown = await data.text();
 
         const contents = split(markdown).map((content, i) => {
