@@ -3,66 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.0.6](https://github.com/diegoavieira/rdsystem/compare/v1.0.5...v1.0.6) (2021-11-19)
+## 1.0.1 (2021-11-26)
 
 
 ### Bug Fixes
 
+* adjustments ([b2f2671](https://github.com/diegoavieira/rdsystem/commit/b2f2671bbfa06a609f1b834ec5e04731a3f91a8e))
+* adjustments ([0e5d1fd](https://github.com/diegoavieira/rdsystem/commit/0e5d1fdb905dd29adb77ebfc00654048cd7e8e17))
+* adjustments ([a2d03d5](https://github.com/diegoavieira/rdsystem/commit/a2d03d5e2cb067966fa73ea91ec3b167498002bb))
+* adjustments ([b308f42](https://github.com/diegoavieira/rdsystem/commit/b308f4260392628a6e0f4ba60772b2f199bb3627))
 * adjustments ([e9e52aa](https://github.com/diegoavieira/rdsystem/commit/e9e52aa468bfa4907c157338937a6ce94dcc7b71))
-
-
-
-
-
-## [1.0.5](https://github.com/diegoavieira/rdsystem/compare/v1.0.4...v1.0.5) (2021-11-19)
-
-
-### Bug Fixes
-
 * adjustments ([07b5c49](https://github.com/diegoavieira/rdsystem/commit/07b5c49acf86fbc32b5d5d84c30447c7abfebbf1))
-
-
-
-
-
-## [1.0.4](https://github.com/diegoavieira/rdsystem/compare/v1.0.3...v1.0.4) (2021-11-19)
-
-
-### Bug Fixes
-
 * adjustments ([660b9fb](https://github.com/diegoavieira/rdsystem/commit/660b9fbb25e3b065fecb4a2cb4790ccad4c0a17e))
-
-
-
-
-
-## [1.0.3](https://github.com/diegoavieira/rdsystem/compare/v1.0.2...v1.0.3) (2021-11-19)
-
-
-### Bug Fixes
-
 * adjustments ([43deb29](https://github.com/diegoavieira/rdsystem/commit/43deb29e4c214bdd67c0b96e8f11d59bb405c986))
-
-
-
-
-
-## [1.0.2](https://github.com/diegoavieira/rdsystem/compare/v1.0.1...v1.0.2) (2021-11-19)
-
-
-### Bug Fixes
-
 * adjustments ([1452ea7](https://github.com/diegoavieira/rdsystem/commit/1452ea7edc50bae70802f3e0d16f925bbef8cc13))
-
-
-
-
-
-## 1.0.1 (2021-11-19)
-
-
-### Bug Fixes
-
 * adjustments ([fa5c742](https://github.com/diegoavieira/rdsystem/commit/fa5c742d5969e53d3fd7e5e15a603fa6869a23df))
 * adjustments ([97fdb82](https://github.com/diegoavieira/rdsystem/commit/97fdb82124353b905ec9e312b28b8d18717e852b))
 * adjustments ([d7f1fe7](https://github.com/diegoavieira/rdsystem/commit/d7f1fe79525710dadb7b53241c6c66977f43f7dc))
@@ -76,3 +30,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * adjustments ([02358f1](https://github.com/diegoavieira/rdsystem/commit/02358f15b3441236aae0647c21ebf269cd61926c))
 * adjustments ([fd46b3e](https://github.com/diegoavieira/rdsystem/commit/fd46b3ed6dbf7941a3c995670fc103e8e61c70d3))
 * adjustments ([6b6a338](https://github.com/diegoavieira/rdsystem/commit/6b6a338b7d5df471bdbb689cefe174e66a5900be))
+
+
+### Features
+
+* adjustments ([5a62264](https://github.com/diegoavieira/rdsystem/commit/5a62264825d265abdb4cff07f22c8aa523dba11a))

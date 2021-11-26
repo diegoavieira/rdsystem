@@ -23,8 +23,8 @@
       "@pages/*": ["src/pages/*"],
       "@docs": ["src/docs"],
       "@docs/*": ["src/docs/*"],
-      "@rdsystem/common": ["libs/common"],
-      "@rdsystem/common/*": ["libs/common/*"]
+      "@rdsystem/components": ["libs/components"],
+      "@rdsystem/components/*": ["libs/components/*"]
     }
   },
   "include": ["src"]

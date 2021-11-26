@@ -1,0 +1,45 @@
+{
+  "name": "@rdsystem/components",
+  "version": "1.0.1",
+  "description": "This library is part of project React Design System",
+  "author": "Diego Adilson Vieira <diegoavieira@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diegoavieira/rdsystem.git"
+  },
+  "homepage": "https://diegoavieira.github.io/rdsystem",
+  "bugs": "https://github.com/diegoavieira/rdsystem/issues",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.12.2",
+    "@material-ui/icons": "^4.11.2",
+    "@types/material-ui": "^0.21.9",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.9",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    },
+    "@types/react-router-dom": {
+      "optional": true
+    },
+    "@types/material-ui": {
+      "optional": true
+    }
+  }
+}
