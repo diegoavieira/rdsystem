@@ -12,7 +12,7 @@ const RdsContainer: FC<RdsContainerProps> = ({ children, maxWidth, disableGutter
     <Container
       data-testid="rds-container"
       className={clsx(classes.root, { [classes.disableGutters]: disableGutters })}
-      maxWidth={maxWidth ?? 'md'}
+      maxWidth={maxWidth || 'md'}
       disableGutters={disableGutters}
     >
       {children}
