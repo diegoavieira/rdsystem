@@ -15,7 +15,7 @@
     "lint": "eslint ./ --fix",
     "format": "prettier --write ./",
     "commit": "git-cz",
-    "release": "lerna version --force-publish"
+    "release": "lerna version"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.2",

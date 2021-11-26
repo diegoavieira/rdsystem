@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import { Layout } from '@components';
 import { Route } from 'react-router-dom';
-import RdsNavProps from '@rdsystem/common/RdsNav/RdsNav.props';
+import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
   PlayCircleOutlineOutlined as PlayCircleOutlineOutlinedIcon,
   DashboardOutlined as DashboardOutlinedIcon,
@@ -12,7 +12,7 @@ import {
 
 const GettingStarted = lazy(() => import('@pages/GettingStarted'));
 const LayoutPage = lazy(() => import('@pages/Layout'));
-const CommonInstallation = lazy(() => import('@pages/common/Installation'));
+const InstallComponents = lazy(() => import('@pages/components/Installation'));
 
 const drawerNavItems: RdsNavProps['items'] = [
   {
@@ -37,24 +37,24 @@ const drawerNavItems: RdsNavProps['items'] = [
         path: '/theme'
       },
       {
-        key: 'common',
+        key: 'components',
         title: 'Components',
         icon: <DashboardOutlinedIcon />,
         items: [
           {
             key: 'installation',
             title: 'Installation',
-            path: '/common/installation'
+            path: '/components/installation'
           },
           {
             key: 'rds-content',
             title: 'RdsContent',
-            path: '/common/rds-content'
+            path: '/components/rds-content'
           },
           {
             key: 'rds-container',
             title: 'RdsContainer',
-            path: '/common/rds-container'
+            path: '/components/rds-container'
           }
         ]
       },
@@ -83,8 +83,8 @@ const App = () => (
       <LayoutPage />
     </Route>
     <Route path="/theme">Theme Page</Route>
-    <Route path="/common/installation">
-      <CommonInstallation />
+    <Route path="/components/installation">
+      <InstallComponents />
     </Route>
   </Layout>
 );

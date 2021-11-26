@@ -1,11 +1,12 @@
 import React from 'react';
-import { RdsContainer, RdsMarked } from '@rdsystem/common';
+import { RdsContainer } from '@rdsystem/components';
+import { Marked } from '@components';
 import { layout } from '@docs';
 
 const Layout = () => {
   return (
     <RdsContainer>
-      <RdsMarked file="src/docs/layout/layout.md" sandboxes={layout} />
+      <Marked file="src/docs/layout/layout.md" sandboxes={layout} />
     </RdsContainer>
   );
 };

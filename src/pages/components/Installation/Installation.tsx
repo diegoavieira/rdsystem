@@ -5,7 +5,7 @@ import { Marked } from '@components';
 const GettingStarted = () => {
   return (
     <RdsContainer>
-      <Marked file="src/docs/getting-started/getting-started.md" />
+      <Marked file="src/docs/components/installation/installation.md" />
     </RdsContainer>
   );
 };
