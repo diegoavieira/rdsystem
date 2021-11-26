@@ -29,7 +29,7 @@ To test a single file, install globa the `jest`:
 npm i -g jest
 ```
 
-And run the command with the spec file:
+And run the command with the spec file. Example:
 
 ```sh
 jest --coverage=false libs/components/RdsContainer/RdsContainer.spec.tsx
