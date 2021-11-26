@@ -119,7 +119,17 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
         component="li"
       >
         <ListItemText classes={{ primary: classes.text }} primary={item.title} />
-        {item.items && <ExpandMoreIcon className={clsx(classes.expandIcon, { [classes.expanded]: expanded })} />}
+        {item.items && (
+          <IconButton
+            disableRipple
+            className={clsx(classes.expandIcon, {
+              [classes.expanded]: expanded,
+              [classes.expandIconActived]: actived(item)
+            })}
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        )}
         {item.icon && (
           <ListItemSecondaryAction className={clsx(classes.icon, { [classes.iconButton]: nested === 0 && !toggle })}>
             <Tooltip

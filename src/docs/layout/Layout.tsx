@@ -1,16 +1,21 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { Typography } from '@material-ui/core';
+import { ThemeOptions, Typography, useTheme, useMediaQuery } from '@material-ui/core';
 import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme, RdsContainer } from '@rdsystem/components';
 import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
   PlayCircleOutlineOutlined as PlayCircleOutlineOutlinedIcon,
   DashboardOutlined as DashboardOutlinedIcon
 } from '@material-ui/icons';
-import { useTheme, useMediaQuery } from '@material-ui/core';
 
-const navItems: RdsNavProps['items'] = [
+const theme: ThemeOptions = {
+  palette: {
+    type: 'light'
+  }
+};
+
+const drawerNavItems: RdsNavProps['items'] = [
   {
     key: 'main',
     items: [
@@ -40,14 +45,15 @@ const navItems: RdsNavProps['items'] = [
 // You won't need it on your project.
 
 const Layout: FC<{ document?: Document }> = ({ document }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
   const [toggle, setToggle] = useState(true);
 
   const onToggle = () => setToggle(!toggle);
 
   useEffect(() => {
-    setToggle(!isMobile);
+    if (isMobile) {
+      setToggle(false);
+    }
   }, [isMobile]);
 
   // Router with 'createMemoryHistoy()' is used to work in an iframe.
@@ -55,7 +61,7 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
 
   return (
     <Router history={createMemoryHistory()}>
-      <RdsTheme productionPrefix="rds" theme={{ palette: { type: 'light' } }}>
+      <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader fixed onToggle={onToggle}>
             <Typography variant="h6" component="span">
@@ -63,7 +69,7 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
             </Typography>
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle} document={document}>
-            <RdsNav document={document} items={navItems} toggle={toggle} />
+            <RdsNav document={document} items={drawerNavItems} toggle={toggle} />
           </RdsDrawer>
           <RdsMain>
             <Suspense fallback="Loading...">

@@ -28,7 +28,7 @@ const MarkedStyles = (theme: Theme) =>
         }
       },
       '& a': {
-        color: theme.palette.secondary.main,
+        color: theme.palette.primary.main,
         textDecoration: 'none',
         '&:hover': {
           textDecoration: 'underline'
