@@ -10,25 +10,25 @@ const production = process.env.NODE_ENV === 'production';
 const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [toogle, setToogle] = useState(true);
+  const [toggle, setToggle] = useState(true);
 
-  const onToogle = () => setToogle(!toogle);
+  const onToggle = () => setToggle(!toggle);
 
   useEffect(() => {
-    setToogle(!isMobile);
+    setToggle(!isMobile);
   }, [isMobile]);
 
   return (
     <BrowserRouter basename={production ? '/rdsystem' : '/'}>
       <RdsTheme productionPrefix="rds" theme={{ palette: { type: 'light' } }}>
         <RdsContent hasHeaderFixed hasDrawer>
-          <RdsHeader fixed onToogle={onToogle}>
+          <RdsHeader fixed onToggle={onToggle}>
             <Typography variant="h6" component="span">
               React Design System
             </Typography>
           </RdsHeader>
-          <RdsDrawer hasHeaderFixed isMobile={isMobile} toogle={toogle} onToogle={onToogle}>
-            <RdsNav nested={production ? 1 : 0} items={drawerNavItems} toogle={toogle} />
+          <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle}>
+            <RdsNav nested={production ? 1 : 0} items={drawerNavItems} toggle={toggle} />
           </RdsDrawer>
           <RdsMain>
             <Suspense fallback="Loading...">

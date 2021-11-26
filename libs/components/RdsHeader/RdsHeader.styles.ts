@@ -5,7 +5,7 @@ const RdsHeaderStyles = (theme: Theme) =>
     root: {
       zIndex: theme.zIndex.drawer + 1
     },
-    toogle: {
+    toggle: {
       marginRight: theme.spacing(0.5)
     },
     title: {

@@ -12,7 +12,7 @@ const RdsNav: FC<RdsNavProps> = ({
   items: itemsList,
   classes,
   RdsNavItemComponent = RdsNavItem,
-  toogle,
+  toggle,
   nested = 0,
   document
 }) => {
@@ -60,7 +60,7 @@ const RdsNav: FC<RdsNavProps> = ({
                         item={item}
                         expanded={item.key === expanded}
                         onExpand={onExpand}
-                        toogle={toogle}
+                        toggle={toggle}
                         opened={item.key === opened}
                         onOpen={onOpen}
                         onClose={onClose}

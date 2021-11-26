@@ -25,7 +25,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
   classes,
   expanded,
   onExpand,
-  toogle,
+  toggle,
   opened,
   onOpen,
   onClose,
@@ -99,7 +99,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
                 nested={nested + 1}
                 expanded={item.key === expandedNested}
                 onExpand={onExpandNested}
-                toogle={toogle}
+                toggle={toggle}
                 onClose={onClosePopover}
               />
             )
@@ -112,7 +112,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
     <>
       <ListItem
         data-testid="rds-nav-item"
-        className={clsx(classes.root, `${toogle ? 'collapse-' : 'popover-'}${nested}`, {
+        className={clsx(classes.root, `${toggle ? 'collapse-' : 'popover-'}${nested}`, {
           [classes.active]: actived(item),
           ['has-icon']: item.icon
         })}
@@ -123,7 +123,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
         <ListItemText classes={{ primary: classes.text }} primary={item.title} />
         {item.items && <ExpandMoreIcon className={clsx(classes.expandIcon, { [classes.expanded]: expanded })} />}
         {item.icon && (
-          <ListItemSecondaryAction className={clsx(classes.icon, { [classes.iconButton]: nested === 0 && !toogle })}>
+          <ListItemSecondaryAction className={clsx(classes.icon, { [classes.iconButton]: nested === 0 && !toggle })}>
             <Tooltip
               PopperProps={{ container: document && document.body }}
               arrow
@@ -143,7 +143,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
         )}
       </ListItem>
       {item.items &&
-        (toogle || nested > 0 ? (
+        (toggle || nested > 0 ? (
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             {nestedItems(item.items)}
           </Collapse>

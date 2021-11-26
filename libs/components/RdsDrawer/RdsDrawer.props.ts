@@ -21,9 +21,9 @@ export default interface RdsDrawerProps extends WithStyles<typeof RdsDrawerStyle
   /**
    * Open and close.
    */
-  toogle?: boolean;
+  toggle?: boolean;
   /**
-   * Toogle open and close.
+   * Toggle open and close.
    */
-  onToogle?: () => void;
+  onToggle?: () => void;
 }

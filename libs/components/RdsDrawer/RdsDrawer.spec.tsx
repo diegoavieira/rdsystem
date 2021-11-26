@@ -25,9 +25,9 @@ describe('<RdsDrawer />', () => {
     expect(paper?.className).toContain('RdsDrawer-hasHeaderFixed');
   });
 
-  test('should prop isMobile and toogle to be true', () => {
+  test('should prop isMobile and toggle to be true', () => {
     render(
-      <RdsDrawer toogle isMobile>
+      <RdsDrawer toggle isMobile>
         <div />
       </RdsDrawer>
     );

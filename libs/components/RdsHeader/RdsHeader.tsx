@@ -17,12 +17,12 @@ const Toolbar = withStyles((theme: Theme) =>
 /**
  * [RdsHeader Examples](https://diegoavieira.github.io/rdsystem/components/rds-header)
  */
-const RdsHeader: FC<RdsHeaderProps> = ({ children, fixed, color, onToogle, classes }) => {
+const RdsHeader: FC<RdsHeaderProps> = ({ children, fixed, color, onToggle, classes }) => {
   return (
     <AppBar data-testid="rds-header" className={classes.root} position={fixed ? 'fixed' : 'static'} color={color}>
       <Toolbar>
-        {onToogle && (
-          <IconButton edge="start" className={classes.toogle} color="inherit" onClick={onToogle}>
+        {onToggle && (
+          <IconButton edge="start" className={classes.toggle} color="inherit" onClick={onToggle}>
             <MenuIcon />
           </IconButton>
         )}

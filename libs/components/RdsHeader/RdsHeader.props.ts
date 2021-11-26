@@ -15,7 +15,7 @@ export default interface RdsHeaderProps extends WithStyles<typeof RdsHeaderStyle
    */
   color?: 'inherit' | 'primary' | 'secondary' | 'default' | 'transparent';
   /**
-   * Show menu button and toogle RdsDrawer.
+   * Show menu button and toggle RdsDrawer.
    */
-  onToogle?: () => void;
+  onToggle?: () => void;
 }

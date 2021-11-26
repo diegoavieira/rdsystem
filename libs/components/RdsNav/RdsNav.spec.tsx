@@ -47,7 +47,7 @@ describe('<RdsNav />', () => {
   });
 
   test('should onExpanded be called', () => {
-    render(<RdsNav items={items} toogle />);
+    render(<RdsNav items={items} toggle />);
 
     fireEvent.click(screen.getByText(/components/i));
     expect(screen.getByText(/installation/i)).toBeTruthy();

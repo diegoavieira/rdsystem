@@ -54,7 +54,7 @@ describe('<RdsNavItem />', () => {
   });
 
   test('should onExpandedNested be called', () => {
-    render(<RdsNavItem item={items[1]} toogle expanded />);
+    render(<RdsNavItem item={items[1]} toggle expanded />);
 
     fireEvent.click(screen.getByText(/theme/i));
     expect(screen.getByText(/test/i)).toBeTruthy();
@@ -63,7 +63,7 @@ describe('<RdsNavItem />', () => {
   });
 
   test('should onOpenPopover be called', () => {
-    render(<RdsNavItem item={items[0]} toogle expanded />);
+    render(<RdsNavItem item={items[0]} toggle expanded />);
 
     fireEvent.click(screen.getByText(/icon/i));
     expect(location.pathname).toBe('/');
@@ -92,7 +92,7 @@ describe('<RdsNavItem />', () => {
       }
     });
 
-    render(<RdsNavItem item={items[1]} toogle expanded nested={1} />);
+    render(<RdsNavItem item={items[1]} toggle expanded nested={1} />);
     expect(screen.getAllByTestId('rds-nav-item')[0].className).toContain('RdsNavItem-active');
   });
 
@@ -102,7 +102,7 @@ describe('<RdsNavItem />', () => {
       title: 'Getting Started'
     };
 
-    render(<RdsNavItem item={item} toogle expanded />);
+    render(<RdsNavItem item={item} toggle expanded />);
     expect(screen.getByTestId('rds-nav-item')).toBeDefined();
   });
 

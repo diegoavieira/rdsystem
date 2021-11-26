@@ -19,7 +19,7 @@ export default interface RdsNavProps extends WithStyles<typeof RdsNavStyles> {
   /**
    * Drawer opened and closed.
    */
-  toogle?: boolean;
+  toggle?: boolean;
   /**
    * Nested index. Default '0';
    */

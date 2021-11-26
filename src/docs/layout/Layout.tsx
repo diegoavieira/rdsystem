@@ -10,7 +10,7 @@ import {
 } from '@material-ui/icons';
 import { useTheme, useMediaQuery } from '@material-ui/core';
 
-const drawerNavItems: RdsNavProps['items'] = [
+const navItems: RdsNavProps['items'] = [
   {
     key: 'main',
     items: [
@@ -42,12 +42,12 @@ const drawerNavItems: RdsNavProps['items'] = [
 const Layout: FC<{ document?: Document }> = ({ document }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [toogle, setToogle] = useState(true);
+  const [toggle, setToggle] = useState(true);
 
-  const onToogle = () => setToogle(!toogle);
+  const onToggle = () => setToggle(!toggle);
 
   useEffect(() => {
-    setToogle(!isMobile);
+    setToggle(!isMobile);
   }, [isMobile]);
 
   // Router with 'createMemoryHistoy()' is used to work in an iframe.
@@ -57,13 +57,13 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
     <Router history={createMemoryHistory()}>
       <RdsTheme productionPrefix="rds" theme={{ palette: { type: 'light' } }}>
         <RdsContent hasHeaderFixed hasDrawer>
-          <RdsHeader fixed onToogle={onToogle}>
+          <RdsHeader fixed onToggle={onToggle}>
             <Typography variant="h6" component="span">
               Layout
             </Typography>
           </RdsHeader>
-          <RdsDrawer hasHeaderFixed isMobile={isMobile} toogle={toogle} onToogle={onToogle} document={document}>
-            <RdsNav document={document} items={drawerNavItems} toogle={toogle} />
+          <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle} document={document}>
+            <RdsNav document={document} items={navItems} toggle={toggle} />
           </RdsDrawer>
           <RdsMain>
             <Suspense fallback="Loading...">

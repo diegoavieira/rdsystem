@@ -32,7 +32,7 @@ export default interface RdsNavItemProps extends WithStyles<typeof RdsNavItemSty
   /**
    * Drawer opened and closed.
    */
-  toogle?: boolean;
+  toggle?: boolean;
   /**
    * Define opened item where not expanded.
    */

@@ -7,7 +7,7 @@ import clsx from 'clsx';
 /**
  * [RdsDrawer Examples](https://diegoavieira.github.io/rdsystem/components/rds-drawer)
  */
-const RdsDrawer: FC<RdsDrawerProps> = ({ hasHeaderFixed, onToogle, toogle, isMobile, classes, children, document }) => {
+const RdsDrawer: FC<RdsDrawerProps> = ({ hasHeaderFixed, onToggle, toggle, isMobile, classes, children, document }) => {
   const [variant, setVariant] = useState<'permanent' | 'temporary'>('permanent');
 
   useEffect(() => {
@@ -18,14 +18,14 @@ const RdsDrawer: FC<RdsDrawerProps> = ({ hasHeaderFixed, onToogle, toogle, isMob
     <Drawer
       data-testid="rds-drawer"
       container={document && document.body}
-      className={clsx(classes.root, !isMobile ? { [classes.open]: toogle, [classes.close]: !toogle } : classes.mobile)}
+      className={clsx(classes.root, !isMobile ? { [classes.open]: toggle, [classes.close]: !toggle } : classes.mobile)}
       variant={variant}
-      open={toogle}
-      onClose={onToogle}
+      open={toggle}
+      onClose={onToggle}
       classes={{
         paper: clsx(
           classes.paper,
-          !isMobile && { [classes.open]: toogle, [classes.close]: !toogle, [classes.hasHeaderFixed]: hasHeaderFixed }
+          !isMobile && { [classes.open]: toggle, [classes.close]: !toggle, [classes.hasHeaderFixed]: hasHeaderFixed }
         )
       }}
     >
