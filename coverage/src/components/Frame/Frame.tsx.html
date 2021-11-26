@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Layout/Layout.tsx</title>
+    <title>Code coverage report for src/components/Frame/Frame.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/Layout</a> Layout.tsx</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/Frame</a> Frame.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/16</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">84.61% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>11/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -101,29 +101,26 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,12 +129,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,50 +147,51 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { FC, Suspense, useEffect, useState } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
-import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme } from '@rdsystem/components';
-import { Typography } from '@material-ui/core';
-import { useTheme, useMediaQuery } from '@material-ui/core';
-import LayoutProps from './Layout.props';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { cloneElement, FC, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { create } from 'jss';
+import { withStyles, jssPreset, StylesProvider } from '@material-ui/core';
+import FrameProps from './Frame.props';
+import FrameStyles from './Frame.styles';
 &nbsp;
-const production = process.env.NODE_ENV === 'production';
-&nbsp;
-const Layout: FC&lt;LayoutProps&gt; = ({ children, drawerNavItems }) =&gt; {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [toggle, setToggle] = useState(true);
-&nbsp;
-  const onToggle = <span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >setToggle(!toggle);</span>
+const Frame: FC&lt;FrameProps&gt; = ({ classes, children }) =&gt; {
+  const ref = useRef&lt;HTMLIFrameElement | null&gt;(null);
+  const [document, setDocument] = useState&lt;Document&gt;();
 &nbsp;
   useEffect(() =&gt; {
-    setToggle(!isMobile);
-  }, [isMobile]);
+    if (ref.current<span class="branch-0 cbranch-no" title="branch not covered" >?.c</span>ontentDocument) {
+      setDocument(ref.current<span class="branch-0 cbranch-no" title="branch not covered" >?.c</span>ontentDocument);
+    }
+  }, []);
+&nbsp;
+  const { jss, sheetsManager } = useMemo(() =&gt; {
+    return {
+      jss: create({
+        plugins: [...jssPreset().plugins],
+        insertionPoint: document &amp;&amp; document.head
+      }),
+      sheetsManager: new Map()
+    };
+  }, [document]);
+&nbsp;
+  const Framed = () =&gt; {
+    return (
+      &lt;StylesProvider jss={jss} sheetsManager={sheetsManager}&gt;
+        {cloneElement(children as ReactElement, {
+          document
+        })}
+      &lt;/StylesProvider&gt;
+    );
+  };
 &nbsp;
   return (
-    &lt;BrowserRouter basename={production ? <span class="branch-0 cbranch-no" title="branch not covered" >'/rdsystem' </span>: '/'}&gt;
-      &lt;RdsTheme productionPrefix="rds" theme={{ palette: { type: 'light' } }}&gt;
-        &lt;RdsContent hasHeaderFixed hasDrawer&gt;
-          &lt;RdsHeader fixed onToggle={onToggle}&gt;
-            &lt;Typography variant="h6" component="span"&gt;
-              React Design System
-            &lt;/Typography&gt;
-          &lt;/RdsHeader&gt;
-          &lt;RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle}&gt;
-            &lt;RdsNav nested={production ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 0} items={drawerNavItems} toggle={toggle} /&gt;
-          &lt;/RdsDrawer&gt;
-          &lt;RdsMain&gt;
-            &lt;Suspense fallback="Loading..."&gt;
-              &lt;Switch&gt;{children}&lt;/Switch&gt;
-            &lt;/Suspense&gt;
-          &lt;/RdsMain&gt;
-        &lt;/RdsContent&gt;
-      &lt;/RdsTheme&gt;
-    &lt;/BrowserRouter&gt;
+    &lt;iframe className={classes.root} ref={ref}&gt;
+      {document &amp;&amp; createPortal(&lt;Framed /&gt;, document.body)}
+    &lt;/iframe&gt;
   );
 };
 &nbsp;
-export default Layout;
+export default withStyles(FrameStyles, { name: 'Frame' })(Frame);
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

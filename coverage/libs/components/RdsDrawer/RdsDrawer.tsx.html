@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/Layout/Layout.tsx</title>
+    <title>Code coverage report for libs/components/RdsDrawer/RdsDrawer.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/Layout</a> Layout.tsx</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">libs/components/RdsDrawer</a> RdsDrawer.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/16</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -94,34 +94,23 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,54 +130,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { FC, Suspense, useEffect, useState } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
-import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme } from '@rdsystem/components';
-import { Typography } from '@material-ui/core';
-import { useTheme, useMediaQuery } from '@material-ui/core';
-import LayoutProps from './Layout.props';
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { FC, useEffect, useState } from 'react';
+import { Drawer, withStyles } from '@material-ui/core';
+import RdsDrawerProps from './RdsDrawer.props';
+import RdsDrawerStyles from './RdsDrawer.styles';
+import clsx from 'clsx';
 &nbsp;
-const production = process.env.NODE_ENV === 'production';
-&nbsp;
-const Layout: FC&lt;LayoutProps&gt; = ({ children, drawerNavItems }) =&gt; {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const [toggle, setToggle] = useState(true);
-&nbsp;
-  const onToggle = <span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >setToggle(!toggle);</span>
+/**
+ * [RdsDrawer Examples](https://diegoavieira.github.io/rdsystem/components/rds-drawer)
+ */
+const RdsDrawer: FC&lt;RdsDrawerProps&gt; = ({ hasHeaderFixed, onToggle, toggle, isMobile, classes, children, document }) =&gt; {
+  const [variant, setVariant] = useState&lt;'permanent' | 'temporary'&gt;('permanent');
 &nbsp;
   useEffect(() =&gt; {
-    setToggle(!isMobile);
+    setVariant(isMobile ? 'temporary' : 'permanent');
   }, [isMobile]);
 &nbsp;
   return (
-    &lt;BrowserRouter basename={production ? <span class="branch-0 cbranch-no" title="branch not covered" >'/rdsystem' </span>: '/'}&gt;
-      &lt;RdsTheme productionPrefix="rds" theme={{ palette: { type: 'light' } }}&gt;
-        &lt;RdsContent hasHeaderFixed hasDrawer&gt;
-          &lt;RdsHeader fixed onToggle={onToggle}&gt;
-            &lt;Typography variant="h6" component="span"&gt;
-              React Design System
-            &lt;/Typography&gt;
-          &lt;/RdsHeader&gt;
-          &lt;RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle}&gt;
-            &lt;RdsNav nested={production ? <span class="branch-0 cbranch-no" title="branch not covered" >1 </span>: 0} items={drawerNavItems} toggle={toggle} /&gt;
-          &lt;/RdsDrawer&gt;
-          &lt;RdsMain&gt;
-            &lt;Suspense fallback="Loading..."&gt;
-              &lt;Switch&gt;{children}&lt;/Switch&gt;
-            &lt;/Suspense&gt;
-          &lt;/RdsMain&gt;
-        &lt;/RdsContent&gt;
-      &lt;/RdsTheme&gt;
-    &lt;/BrowserRouter&gt;
+    &lt;Drawer
+      data-testid="rds-drawer"
+      container={document &amp;&amp; document.body}
+      className={clsx(classes.root, !isMobile ? { [classes.open]: toggle, [classes.close]: !toggle } : classes.mobile)}
+      variant={variant}
+      open={toggle}
+      onClose={onToggle}
+      classes={{
+        paper: clsx(
+          classes.paper,
+          !isMobile &amp;&amp; { [classes.open]: toggle, [classes.close]: !toggle, [classes.hasHeaderFixed]: hasHeaderFixed }
+        )
+      }}
+    &gt;
+      {children}
+    &lt;/Drawer&gt;
   );
 };
 &nbsp;
-export default Layout;
+export default withStyles(RdsDrawerStyles, { name: 'RdsDrawer' })(RdsDrawer);
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
