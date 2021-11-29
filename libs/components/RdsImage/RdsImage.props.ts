@@ -1,7 +1,7 @@
 import { WithStyles } from '@material-ui/core/styles/withStyles';
-import ImageStyles from './RdsImage.styles';
+import RdsImageStyles from './RdsImage.styles';
 
-export default interface ImageProps extends WithStyles<typeof ImageStyles> {
+export default interface RdsImageProps extends WithStyles<typeof RdsImageStyles> {
   /**
    * Image source.
    */

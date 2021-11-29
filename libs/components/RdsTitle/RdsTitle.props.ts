@@ -1,7 +1,7 @@
 import { WithStyles } from '@material-ui/core/styles/withStyles';
-import TitleStyles from './RdsTitle.styles';
+import RdsTitleStyles from './RdsTitle.styles';
 
-export default interface TitleProps extends WithStyles<typeof TitleStyles> {
+export default interface RdsTitleProps extends WithStyles<typeof RdsTitleStyles> {
   /**
    * Title content.
    */

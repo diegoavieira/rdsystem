@@ -2,7 +2,16 @@ import React, { FC, Suspense, useEffect, useState } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { ThemeOptions, Typography, useTheme, useMediaQuery } from '@material-ui/core';
-import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme, RdsContainer } from '@rdsystem/components';
+import {
+  RdsMain,
+  RdsContent,
+  RdsDrawer,
+  RdsHeader,
+  RdsNav,
+  RdsTheme,
+  RdsContainer,
+  RdsTitle
+} from '@rdsystem/components';
 import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
   PlayCircleOutlineOutlined as PlayCircleOutlineOutlinedIcon,
@@ -64,9 +73,7 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader fixed onToggle={onToggle}>
-            <Typography variant="h6" component="span">
-              Layout
-            </Typography>
+            <RdsTitle type="span">Layout</RdsTitle>
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle} document={document}>
             <RdsNav document={document} items={drawerNavItems} toggle={toggle} />
