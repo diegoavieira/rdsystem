@@ -5,7 +5,7 @@ export default interface RdsHeaderProps extends WithStyles<typeof RdsHeaderStyle
   /**
    * Children.
    */
-  children?: JSX.Element;
+  children?: JSX.Element | JSX.Element[];
   /**
    * Fixed at the top.
    */
