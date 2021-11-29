@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import { ThemeOptions, Typography, useTheme, useMediaQuery } from '@material-ui/core';
-import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme } from '@rdsystem/components';
+import { ThemeOptions, useTheme, useMediaQuery } from '@material-ui/core';
+import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme, RdsTitle } from '@rdsystem/components';
 import LayoutProps from './Layout.props';
 
 const production = process.env.NODE_ENV === 'production';
@@ -29,9 +29,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader fixed onToggle={onToggle}>
-            <Typography variant="h6" component="span">
-              React Design System
-            </Typography>
+            <RdsTitle type="span">React Design System</RdsTitle>
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle}>
             <RdsNav nested={production ? 1 : 0} items={drawerNavItems} toggle={toggle} />

@@ -7,11 +7,11 @@ export default interface ImageProps extends WithStyles<typeof ImageStyles> {
    */
   src: string;
   /**
-   * Image width. Defualt is auto.
+   * Image width. Default is auto.
    */
   width?: number | string;
   /**
-   * Image height. Defualt is auto.
+   * Image height. Default is auto.
    */
   height?: number | string;
 }

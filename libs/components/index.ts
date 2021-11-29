@@ -24,3 +24,6 @@ export * from './RdsNavItem';
 
 export { default as RdsImage } from './RdsImage';
 export * from './RdsImage';
+
+export { default as RdsTitle } from './RdsTitle';
+export * from './RdsTitle';
