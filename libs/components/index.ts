@@ -27,3 +27,9 @@ export * from './RdsImage';
 
 export { default as RdsTitle } from './RdsTitle';
 export * from './RdsTitle';
+
+export { default as RdsList } from './RdsList';
+export * from './RdsList';
+
+export { default as RdsListItem } from './RdsListItem';
+export * from './RdsListItem';

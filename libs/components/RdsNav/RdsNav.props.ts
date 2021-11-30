@@ -21,7 +21,7 @@ export default interface RdsNavProps extends WithStyles<typeof RdsNavStyles> {
    */
   toggle?: boolean;
   /**
-   * Nested index. Default '0';
+   * Nested index. Default is 0;
    */
   nested?: number;
 }

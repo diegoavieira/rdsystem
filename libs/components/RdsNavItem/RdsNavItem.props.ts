@@ -18,7 +18,7 @@ export default interface RdsNavItemProps extends WithStyles<typeof RdsNavItemSty
     hidden?: boolean;
   };
   /**
-   * Nested index. Default '0';
+   * Nested index. Default is 0;
    */
   nested?: number;
   /**

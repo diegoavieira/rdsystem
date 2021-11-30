@@ -86,7 +86,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
 
   const nestedItems = (items: RdsNavItemProps['item'][]) => {
     return (
-      <List disablePadding>
+      <>
         {items.map(
           (item) =>
             !item.hidden && (
@@ -102,7 +102,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
               />
             )
         )}
-      </List>
+      </>
     );
   };
 
@@ -154,11 +154,11 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
       {item.items &&
         (toggle || nested > 0 ? (
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            {nestedItems(item.items)}
+            <List disablePadding>{nestedItems(item.items)}</List>
           </Collapse>
         ) : (
           <Popover open={!!opened} anchorEl={ref.current} onClose={onClosePopover}>
-            {nestedItems(item.items)}
+            <List>{nestedItems(item.items)}</List>
           </Popover>
         ))}
     </>

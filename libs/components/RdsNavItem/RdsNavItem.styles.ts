@@ -29,7 +29,6 @@ const RdsNavItemStyles = (theme: Theme) =>
     },
     text: {},
     active: {},
-    paper: {},
     expandIcon: {
       padding: 0,
       '&:hover': {
