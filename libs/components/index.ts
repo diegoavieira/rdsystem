@@ -33,3 +33,6 @@ export * from './RdsList';
 
 export { default as RdsListItem } from './RdsListItem';
 export * from './RdsListItem';
+
+export { default as RdsMenu } from './RdsMenu';
+export * from './RdsMenu';
