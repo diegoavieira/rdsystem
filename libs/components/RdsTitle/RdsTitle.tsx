@@ -15,6 +15,7 @@ const RdsTitle: FC<RdsTitleProps> = ({ classes, type, children, color, light }) 
       component={type || 'h1'}
       variant={type === 'h2' || type === 'span' ? 'h6' : 'h5'}
       color={color}
+      noWrap
     >
       {children}
     </Typography>

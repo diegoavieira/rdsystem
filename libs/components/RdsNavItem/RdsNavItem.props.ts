@@ -45,4 +45,8 @@ export default interface RdsNavItemProps extends WithStyles<typeof RdsNavItemSty
    * OnClose item where not expanded.
    */
   onClose?: () => void;
+  /**
+   * Toggle RdsDrawer.
+   */
+  onToggle?: () => void;
 }

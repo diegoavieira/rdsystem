@@ -20,4 +20,8 @@ export default interface RdsMenuProps extends WithStyles<typeof RdsMenuStyles> {
    * Anchor element.
    */
   anchorEl: HTMLElement | null;
+  /**
+   * Document.
+   */
+  document?: Document;
 }

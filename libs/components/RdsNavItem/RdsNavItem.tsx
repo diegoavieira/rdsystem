@@ -29,7 +29,8 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
   opened,
   onOpen,
   onClose,
-  document
+  document,
+  onToggle
 }) => {
   const history = useHistory();
   const location = useLocation();
@@ -54,6 +55,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
     if (item.path) {
       history.push(item.path);
       onClosePopover();
+      onToggle && onToggle();
     }
 
     onExpand && onExpand(item, !expanded);
@@ -99,6 +101,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
                 onExpand={onExpandNested}
                 toggle={toggle}
                 onClose={onClosePopover}
+                onToggle={onToggle}
               />
             )
         )}
@@ -157,7 +160,12 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
             <List disablePadding>{nestedItems(item.items)}</List>
           </Collapse>
         ) : (
-          <Popover open={!!opened} anchorEl={ref.current} onClose={onClosePopover}>
+          <Popover
+            container={document && document.body}
+            open={!!opened}
+            anchorEl={ref.current}
+            onClose={onClosePopover}
+          >
             <List>{nestedItems(item.items)}</List>
           </Popover>
         ))}

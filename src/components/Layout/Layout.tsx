@@ -32,7 +32,12 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
             <RdsTitle type="span">React Design System</RdsTitle>
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle}>
-            <RdsNav nested={production ? 1 : 0} items={drawerNavItems} toggle={toggle} />
+            <RdsNav
+              nested={production ? 1 : 0}
+              items={drawerNavItems}
+              toggle={toggle}
+              onToggle={isMobile ? onToggle : undefined}
+            />
           </RdsDrawer>
           <RdsMain>
             <Suspense fallback="Loading...">

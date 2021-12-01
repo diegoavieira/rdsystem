@@ -7,11 +7,17 @@ import RdsList from '../RdsList';
 /**
  * [RdsMenu Examples](https://diegoavieira.github.io/rdsystem/components/rds-menu)
  */
-const RdsMenu: FC<RdsMenuProps> = ({ children, items, anchorEl, onClose }) => {
+const RdsMenu: FC<RdsMenuProps> = ({ children, items, anchorEl, onClose, document }) => {
   return (
     <>
       {children}
-      <Popover data-testid="rds-menu" open={!!anchorEl} anchorEl={anchorEl} onClose={onClose}>
+      <Popover
+        container={document && document.body}
+        data-testid="rds-menu"
+        open={!!anchorEl}
+        anchorEl={anchorEl}
+        onClose={onClose}
+      >
         <RdsList items={items} />
       </Popover>
     </>

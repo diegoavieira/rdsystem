@@ -24,4 +24,8 @@ export default interface RdsNavProps extends WithStyles<typeof RdsNavStyles> {
    * Nested index. Default is 0;
    */
   nested?: number;
+  /**
+   * Toggle RdsDrawer.
+   */
+  onToggle?: () => void;
 }

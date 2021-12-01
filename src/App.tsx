@@ -55,30 +55,6 @@ const drawerNavItems: RdsNavProps['items'] = [
             key: 'rds-container',
             title: 'RdsContainer',
             path: '/components/rds-container'
-          },
-          {
-            key: 'hooks',
-            title: 'Hooks',
-            icon: <BubbleChartOutlinedIcon />,
-            items: [
-              {
-                key: 'rds-use-fetch',
-                title: 'rdsUseFecth',
-                path: '/hooks/rds-use-fetch'
-              },
-              {
-                key: 'hooks',
-                title: 'Hooks',
-                icon: <BubbleChartOutlinedIcon />,
-                items: [
-                  {
-                    key: 'rds-use-fetch',
-                    title: 'rdsUseFecth',
-                    path: '/hooks/rds-use-fetch'
-                  }
-                ]
-              }
-            ]
           }
         ]
       },

@@ -1,7 +1,6 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
-import { Router, Switch, Route } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
-import { ThemeOptions, Typography, useTheme, useMediaQuery } from '@material-ui/core';
+import { MemoryRouter, Switch, Route } from 'react-router-dom';
+import { ThemeOptions, Typography, useTheme, useMediaQuery, withStyles, createStyles } from '@material-ui/core';
 import {
   RdsMain,
   RdsContent,
@@ -10,7 +9,8 @@ import {
   RdsNav,
   RdsTheme,
   RdsContainer,
-  RdsTitle
+  RdsTitle,
+  RdsAvatar
 } from '@rdsystem/components';
 import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
@@ -50,6 +50,14 @@ const drawerNavItems: RdsNavProps['items'] = [
   }
 ];
 
+const RdsTitleStyled = withStyles(() =>
+  createStyles({
+    root: {
+      flexGrow: 1
+    }
+  })
+)(RdsTitle);
+
 // Prop document is injected by the documentation to work in an iframe.
 // You won't need it on your project.
 
@@ -65,18 +73,24 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
     }
   }, [isMobile]);
 
-  // Router with 'createMemoryHistoy()' is used to work in an iframe.
+  // MemoryRouter is used to work in an iframe.
   // You won't need it on your project. Use BrowserRouter.
 
   return (
-    <Router history={createMemoryHistory()}>
+    <MemoryRouter>
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader fixed onToggle={onToggle}>
-            <RdsTitle type="span">Layout</RdsTitle>
+            <RdsTitleStyled type="span">Layout</RdsTitleStyled>
+            <RdsAvatar />
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle} document={document}>
-            <RdsNav document={document} items={drawerNavItems} toggle={toggle} />
+            <RdsNav
+              document={document}
+              items={drawerNavItems}
+              toggle={toggle}
+              onToggle={isMobile ? onToggle : undefined}
+            />
           </RdsDrawer>
           <RdsMain>
             <Suspense fallback="Loading...">
@@ -121,7 +135,7 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
           </RdsMain>
         </RdsContent>
       </RdsTheme>
-    </Router>
+    </MemoryRouter>
   );
 };
 

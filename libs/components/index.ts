@@ -36,3 +36,6 @@ export * from './RdsListItem';
 
 export { default as RdsMenu } from './RdsMenu';
 export * from './RdsMenu';
+
+export { default as RdsAvatar } from './RdsAvatar';
+export * from './RdsAvatar';
