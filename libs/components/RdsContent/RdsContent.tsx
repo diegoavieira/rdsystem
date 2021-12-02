@@ -1,9 +1,35 @@
 import React, { FC } from 'react';
-import { CssBaseline, withStyles } from '@material-ui/core';
+import { CssBaseline, Theme, withStyles, createStyles } from '@material-ui/core';
 import RdsContentProps from './RdsContent.props';
 import RdsContentStyles from './RdsContent.styles';
 import clsx from 'clsx';
 
+const CssBaselineStyled = withStyles((theme: Theme) =>
+  createStyles({
+    '@global': {
+      '.rds-scrollbar': {
+        overflow: 'overlay'
+      },
+      '.rds-scrollbar-x': {
+        overflowX: 'overlay'
+      },
+      '.rds-scrollbar-y': {
+        overflowY: 'overlay'
+      },
+      '.rds-scrollbar::-webkit-scrollbar, .rds-scrollbar-x::-webkit-scrollbar, .rds-scrollbar-y::-webkit-scrollbar': {
+        width: 10,
+        height: 10
+      },
+      '.rds-scrollbar::-webkit-scrollbar-thumb, .rds-scrollbar-x::-webkit-scrollbar-thumb, .rds-scrollbar-y::-webkit-scrollbar-thumb':
+        {
+          backgroundColor: theme.palette.action.disabled,
+          borderRadius: 10,
+          border: '3px solid transparent',
+          backgroundClip: 'content-box'
+        }
+    }
+  })
+)(CssBaseline);
 /**
  * [RdsContent Examples](https://diegoavieira.github.io/rdsystem/components/rds-content)
  */
@@ -17,7 +43,7 @@ const RdsContent: FC<RdsContentProps> = ({ children, hasDrawer, hasHeaderFixed, 
         [classes.hasFooter]: hasFooter
       })}
     >
-      <CssBaseline />
+      <CssBaselineStyled />
       {children}
     </div>
   );
