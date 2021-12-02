@@ -39,3 +39,6 @@ export * from './RdsMenu';
 
 export { default as RdsAvatar } from './RdsAvatar';
 export * from './RdsAvatar';
+
+export { default as RdsText } from './RdsText';
+export * from './RdsText';

@@ -7,7 +7,7 @@ import clsx from 'clsx';
 /**
  * [RdsTitle Examples](https://diegoavieira.github.io/rdsystem/components/rds-title)
  */
-const RdsTitle: FC<RdsTitleProps> = ({ classes, type, children, color, light }) => {
+const RdsTitle: FC<RdsTitleProps> = ({ classes, type, children, color, light, margin = 0 }) => {
   return (
     <Typography
       data-testid="rds-title"
@@ -16,6 +16,7 @@ const RdsTitle: FC<RdsTitleProps> = ({ classes, type, children, color, light }) 
       variant={type === 'h2' || type === 'span' ? 'h6' : 'h5'}
       color={color}
       noWrap
+      style={{ margin }}
     >
       {children}
     </Typography>

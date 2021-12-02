@@ -1,6 +1,6 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
-import { ThemeOptions, Typography, useTheme, useMediaQuery, withStyles, createStyles } from '@material-ui/core';
+import { ThemeOptions, useTheme, useMediaQuery, withStyles, createStyles } from '@material-ui/core';
 import {
   RdsMain,
   RdsContent,
@@ -10,7 +10,8 @@ import {
   RdsTheme,
   RdsContainer,
   RdsTitle,
-  RdsAvatar
+  RdsAvatar,
+  RdsText
 } from '@rdsystem/components';
 import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
@@ -97,7 +98,7 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
               <Switch>
                 <Route exact path="/">
                   <RdsContainer>
-                    <Typography variant="body1">
+                    <RdsText margin="0 0 16px">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                       labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
                       Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
@@ -106,28 +107,30 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
                       quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin
                       fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat.
                       Vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed
-                      ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac. Lorem ipsum dolor
-                      sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi
-                      tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis
-                      tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-                      adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-                      viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris
-                      commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue
-                      eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-                      donec massa sapien faucibus et molestie ac.
-                    </Typography>
+                      ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+                    </RdsText>
+                    <RdsText>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
+                      Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
+                      tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis
+                      commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer
+                      quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin
+                      fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
+                      vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed
+                      ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+                    </RdsText>
                   </RdsContainer>
                 </Route>
                 <Route path="/collapse/collapsed">
                   <RdsContainer>
-                    <Typography variant="body1">
+                    <RdsText>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                       labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
                       Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
                       tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis
                       commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-                    </Typography>
+                    </RdsText>
                   </RdsContainer>
                 </Route>
               </Switch>
