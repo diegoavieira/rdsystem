@@ -6,8 +6,7 @@ const RdsMainStyles = () =>
       flexGrow: 1
     },
     fixed: {
-      height: 'calc(100vh - 56px)',
-      overflow: 'auto'
+      height: 'calc(100vh - 56px)'
     }
   });
 
