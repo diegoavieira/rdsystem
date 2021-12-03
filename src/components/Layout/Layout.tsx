@@ -13,8 +13,6 @@ import {
 } from '@rdsystem/components';
 import LayoutProps from './Layout.props';
 
-const production = process.env.NODE_ENV === 'production';
-
 const theme: ThemeOptions = {
   palette: {
     type: 'light'
@@ -22,6 +20,7 @@ const theme: ThemeOptions = {
 };
 
 const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
+  const production = process.env.NODE_ENV === 'production';
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
   const [toggle, setToggle] = useState(true);
 
