@@ -1,7 +1,16 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { ThemeOptions, useTheme, useMediaQuery } from '@material-ui/core';
-import { RdsMain, RdsContent, RdsDrawer, RdsHeader, RdsNav, RdsTheme, RdsTitle } from '@rdsystem/components';
+import {
+  RdsMain,
+  RdsContent,
+  RdsDrawer,
+  RdsHeader,
+  RdsNav,
+  RdsTheme,
+  RdsTitle,
+  RdsLoading
+} from '@rdsystem/components';
 import LayoutProps from './Layout.props';
 
 const production = process.env.NODE_ENV === 'production';
@@ -40,7 +49,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
             />
           </RdsDrawer>
           <RdsMain>
-            <Suspense fallback="Loading...">
+            <Suspense fallback={<RdsLoading />}>
               <Switch>{children}</Switch>
             </Suspense>
           </RdsMain>

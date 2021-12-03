@@ -5,8 +5,12 @@ import RdsListItemProps from '../RdsListItem/RdsListItem.props';
 
 const items: RdsListItemProps['item'][] = [
   {
-    key: 'primary',
-    primary: 'Primary',
+    key: 'user',
+    primary: 'User'
+  },
+  {
+    key: 'logout',
+    primary: 'Logout',
     action: (item) => console.log(item)
   }
 ];
@@ -16,9 +20,9 @@ describe('<RdsAvatar />', () => {
     render(<RdsAvatar items={items} />);
 
     fireEvent.click(screen.getByTestId('rds-avatar'));
-    expect(screen.getByText(/primary/i)).toBeDefined();
+    expect(screen.getByText(/logout/i)).toBeDefined();
 
-    fireEvent.click(screen.getByText(/primary/i));
+    fireEvent.click(screen.getByText(/logout/i));
   });
 
   test('should not has prop items', () => {

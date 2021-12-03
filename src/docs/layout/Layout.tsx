@@ -11,7 +11,8 @@ import {
   RdsContainer,
   RdsTitle,
   RdsAvatar,
-  RdsText
+  RdsText,
+  RdsLoading
 } from '@rdsystem/components';
 import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
@@ -94,7 +95,7 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
             />
           </RdsDrawer>
           <RdsMain>
-            <Suspense fallback="Loading...">
+            <Suspense fallback={<RdsLoading />}>
               <Switch>
                 <Route exact path="/">
                   <RdsContainer>

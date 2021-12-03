@@ -42,3 +42,6 @@ export * from './RdsAvatar';
 
 export { default as RdsText } from './RdsText';
 export * from './RdsText';
+
+export { default as RdsLoading } from './RdsLoading';
+export * from './RdsLoading';
