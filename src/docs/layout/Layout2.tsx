@@ -15,7 +15,19 @@ import {
 
 const theme: ThemeOptions = {
   palette: {
-    type: 'light'
+    type: 'light',
+    primary: {
+      light: '#39796b',
+      main: '#004d40',
+      dark: '#00251a',
+      contrastText: '#fff'
+    },
+    secondary: {
+      light: '#ffff8b',
+      main: '#ffee58',
+      dark: '#c9bc1f',
+      contrastText: 'rgba(0, 0, 0, 0.87)'
+    }
   }
 };
 

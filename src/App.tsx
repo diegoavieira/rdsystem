@@ -12,7 +12,8 @@ import {
 
 const GettingStarted = lazy(() => import('@pages/GettingStarted'));
 const LayoutPage = lazy(() => import('@pages/Layout'));
-const InstallComponents = lazy(() => import('@pages/components/Installation'));
+const ThemePage = lazy(() => import('@pages/Theme'));
+const InstallComponents = lazy(() => import('@pages/Components/Installation'));
 
 const drawerNavItems: RdsNavProps['items'] = [
   {
@@ -82,7 +83,9 @@ const App = () => (
     <Route path="/layout">
       <LayoutPage />
     </Route>
-    <Route path="/theme">Theme Page</Route>
+    <Route path="/theme">
+      <ThemePage />
+    </Route>
     <Route path="/components/installation">
       <InstallComponents />
     </Route>
