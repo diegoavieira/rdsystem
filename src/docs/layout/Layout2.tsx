@@ -1,12 +1,10 @@
-import React, { FC, Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
-import { ThemeOptions, useTheme, useMediaQuery, withStyles, createStyles } from '@material-ui/core';
+import { ThemeOptions, withStyles, createStyles } from '@material-ui/core';
 import {
   RdsMain,
   RdsContent,
-  RdsDrawer,
   RdsHeader,
-  RdsNav,
   RdsTheme,
   RdsContainer,
   RdsTitle,
@@ -14,43 +12,12 @@ import {
   RdsText,
   RdsLoading
 } from '@rdsystem/components';
-import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
-import {
-  PlayCircleOutlineOutlined as PlayCircleOutlineOutlinedIcon,
-  DashboardOutlined as DashboardOutlinedIcon
-} from '@material-ui/icons';
 
 const theme: ThemeOptions = {
   palette: {
     type: 'light'
   }
 };
-
-const drawerNavItems: RdsNavProps['items'] = [
-  {
-    key: 'main',
-    items: [
-      {
-        key: 'route',
-        title: 'Route',
-        icon: <PlayCircleOutlineOutlinedIcon />,
-        path: '/'
-      },
-      {
-        key: 'collapse',
-        title: 'Collapse',
-        icon: <DashboardOutlinedIcon />,
-        items: [
-          {
-            key: 'collapsed',
-            title: 'Collapsed',
-            path: '/collapse/collapsed'
-          }
-        ]
-      }
-    ]
-  }
-];
 
 const RdsTitleStyled = withStyles(() =>
   createStyles({
@@ -60,40 +27,18 @@ const RdsTitleStyled = withStyles(() =>
   })
 )(RdsTitle);
 
-// Prop document is injected by the documentation to work in an iframe.
-// You won't need it on your project.
-
-const Layout: FC<{ document?: Document }> = ({ document }) => {
-  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
-  const [toggle, setToggle] = useState(true);
-
-  const onToggle = () => setToggle(!toggle);
-
-  useEffect(() => {
-    if (isMobile) {
-      setToggle(false);
-    }
-  }, [isMobile]);
-
+const Layout2 = () => {
   // MemoryRouter is used to work in an iframe.
   // You won't need it on your project. Use BrowserRouter.
 
   return (
     <MemoryRouter>
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
-        <RdsContent hasHeaderFixed hasDrawer>
-          <RdsHeader fixed onToggle={onToggle}>
-            <RdsTitleStyled type="span">Layout</RdsTitleStyled>
+        <RdsContent>
+          <RdsHeader>
+            <RdsTitleStyled type="span">Layout 2</RdsTitleStyled>
             <RdsAvatar />
           </RdsHeader>
-          <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle} document={document}>
-            <RdsNav
-              document={document}
-              items={drawerNavItems}
-              toggle={toggle}
-              onToggle={isMobile ? onToggle : undefined}
-            />
-          </RdsDrawer>
           <RdsMain>
             <Suspense fallback={<RdsLoading />}>
               <Switch>
@@ -121,10 +66,6 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
                       vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed
                       ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
                     </RdsText>
-                  </RdsContainer>
-                </Route>
-                <Route path="/collapse/collapsed">
-                  <RdsContainer>
                     <RdsText>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                       labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
@@ -143,4 +84,4 @@ const Layout: FC<{ document?: Document }> = ({ document }) => {
   );
 };
 
-export default Layout;
+export default Layout2;

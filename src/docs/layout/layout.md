@@ -1,13 +1,15 @@
 # Layout
 
-The component layout is responsible for the application structure. It should contain the components RdsTheme, RdsContent, RdsHeader, RdsDrawer and RdsMain. It can be created according to the example:
+The component layout is responsible for the application structure. It should contain the components RdsTheme, RdsContent, RdsHeader, RdsDrawer and RdsMain. It can be created according to the examples:
 
-{{"sandbox": "Layout.tsx", "frame": true}}
+## Layout 1
 
-It can be imported in the App:
+Layout with RdsHeader fixed and RdsDrawer.
 
-```tsx
-const App = () => <Layout />;
+{{"sandbox": "Layout1.tsx", "frame": true}}
 
-export default App;
-```
+## Layout 2
+
+Layout with RdsHeader not fixed and without RdsDrawer.
+
+{{"sandbox": "Layout2.tsx", "frame": true}}
