@@ -11,16 +11,16 @@ const theme: ThemeOptions = {
   palette: {
     type: 'light',
     primary: {
-      light: '#39796b',
-      main: '#004d40',
-      dark: '#00251a',
+      light: '#80e27e',
+      main: '#4caf50',
+      dark: '#087f23',
       contrastText: '#fff'
     },
     secondary: {
-      light: '#9c786c',
-      main: '#6d4c41',
-      dark: '#40241a',
-      contrastText: '#fff'
+      light: '#ffff8b',
+      main: '#ffee58',
+      dark: '#c9bc1f',
+      contrastText: 'rgba(0, 0, 0, 0.87)'
     }
   }
 };

@@ -1,8 +1,8 @@
 import { createStyles } from '@material-ui/core';
 
-const RdsAvatarStyles = () =>
+const RdsIconButtonStyles = () =>
   createStyles({
     root: {}
   });
 
-export default RdsAvatarStyles;
+export default RdsIconButtonStyles;

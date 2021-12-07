@@ -18,4 +18,8 @@ export default interface RdsHeaderProps extends WithStyles<typeof RdsHeaderStyle
    * Show menu button and toggle RdsDrawer.
    */
   onToggle?: () => void;
+  /**
+   * Document.
+   */
+  document?: Document;
 }

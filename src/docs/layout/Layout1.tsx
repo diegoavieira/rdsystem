@@ -1,6 +1,7 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
-import { ThemeOptions, useTheme, useMediaQuery, withStyles, createStyles } from '@material-ui/core';
+import { ThemeOptions, useTheme, useMediaQuery } from '@material-ui/core';
+import { Brightness4 as Brightness4Icon, Brightness7 as Brightness7Icon } from '@material-ui/icons';
 import {
   RdsMain,
   RdsContent,
@@ -12,31 +13,15 @@ import {
   RdsTitle,
   RdsAvatar,
   RdsText,
-  RdsLoading
+  RdsLoading,
+  RdsIconButton
 } from '@rdsystem/components';
 import RdsNavProps from '@rdsystem/components/RdsNav/RdsNav.props';
 import {
   PlayCircleOutlineOutlined as PlayCircleOutlineOutlinedIcon,
   DashboardOutlined as DashboardOutlinedIcon
 } from '@material-ui/icons';
-
-const theme: ThemeOptions = {
-  palette: {
-    type: 'light',
-    primary: {
-      light: '#39796b',
-      main: '#004d40',
-      dark: '#00251a',
-      contrastText: '#fff'
-    },
-    secondary: {
-      light: '#ffff8b',
-      main: '#ffee58',
-      dark: '#c9bc1f',
-      contrastText: 'rgba(0, 0, 0, 0.87)'
-    }
-  }
-};
+import RdsListItemProps from '@rdsystem/components/RdsListItem/RdsListItem.props';
 
 const drawerNavItems: RdsNavProps['items'] = [
   {
@@ -64,22 +49,46 @@ const drawerNavItems: RdsNavProps['items'] = [
   }
 ];
 
-const RdsTitleStyled = withStyles(() =>
-  createStyles({
-    root: {
-      flexGrow: 1
-    }
-  })
-)(RdsTitle);
-
 // Prop document is injected by the documentation to work in an iframe.
 // You won't need it on your project.
 
 const Layout1: FC<{ document?: Document }> = ({ document }) => {
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));
   const [toggle, setToggle] = useState(true);
+  const [type, setType] = useState<'light' | 'dark'>('light');
 
   const onToggle = () => setToggle(!toggle);
+  const onType = () => setType(type === 'light' ? 'dark' : 'light');
+
+  const theme: ThemeOptions = {
+    palette: {
+      type,
+      primary: {
+        light: '#80e27e',
+        main: '#4caf50',
+        dark: '#087f23',
+        contrastText: '#fff'
+      },
+      secondary: {
+        light: '#ffff8b',
+        main: '#ffee58',
+        dark: '#c9bc1f',
+        contrastText: 'rgba(0, 0, 0, 0.87)'
+      }
+    }
+  };
+
+  const avatrItems: RdsListItemProps['item'][] = [
+    {
+      key: 'user',
+      primary: 'User'
+    },
+    {
+      key: 'logout',
+      primary: 'Logout',
+      action: (item) => console.log(item)
+    }
+  ];
 
   useEffect(() => {
     if (isMobile) {
@@ -94,9 +103,20 @@ const Layout1: FC<{ document?: Document }> = ({ document }) => {
     <MemoryRouter>
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
-          <RdsHeader fixed onToggle={onToggle}>
-            <RdsTitleStyled type="span">Layout 1</RdsTitleStyled>
-            <RdsAvatar />
+          <RdsHeader fixed onToggle={onToggle} document={document}>
+            <RdsTitle type="span" margin="0 auto 0 0">
+              Layout 1
+            </RdsTitle>
+            <RdsIconButton
+              document={document}
+              margin="0 8px 0 0"
+              color="inherit"
+              onClick={onType}
+              tooltip="Toggle ligh/dark theme"
+            >
+              {type === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+            </RdsIconButton>
+            <RdsAvatar items={avatrItems} document={document} tooltip="Profile" />
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle} document={document}>
             <RdsNav

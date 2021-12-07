@@ -45,3 +45,6 @@ export * from './RdsText';
 
 export { default as RdsLoading } from './RdsLoading';
 export * from './RdsLoading';
+
+export { default as RdsIconButton } from './RdsIconButton';
+export * from './RdsIconButton';

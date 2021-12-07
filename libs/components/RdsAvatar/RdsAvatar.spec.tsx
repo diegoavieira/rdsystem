@@ -19,7 +19,7 @@ describe('<RdsAvatar />', () => {
   test('should has prop items', () => {
     render(<RdsAvatar items={items} />);
 
-    fireEvent.click(screen.getByTestId('rds-avatar'));
+    fireEvent.click(screen.getByTestId('rds-icon-button'));
     expect(screen.getByText(/logout/i)).toBeDefined();
 
     fireEvent.click(screen.getByText(/logout/i));

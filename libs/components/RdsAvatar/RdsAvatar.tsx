@@ -1,14 +1,23 @@
 import React, { FC, MouseEvent, useState } from 'react';
-import { withStyles, IconButton, Avatar } from '@material-ui/core';
+import { withStyles, Avatar, createStyles } from '@material-ui/core';
 import RdsAvatarProps from './RdsAvatar.props';
 import RdsAvatarStyles from './RdsAvatar.styles';
 import RdsMenu from '../RdsMenu';
 import RdsListItemProps from '../RdsListItem/RdsListItem.props';
+import RdsIconButton from '../RdsIconButton';
+
+const RdsIconButtonStyled = withStyles(() =>
+  createStyles({
+    root: {
+      padding: 0
+    }
+  })
+)(RdsIconButton);
 
 /**
  * [RdsAvatar Examples](https://diegoavieira.github.io/rdsystem/components/rds-avatar)
  */
-const RdsAvatar: FC<RdsAvatarProps> = ({ classes, items, src, document }) => {
+const RdsAvatar: FC<RdsAvatarProps> = ({ classes, items, src, document, tooltip }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const onOpen = (event: MouseEvent<HTMLElement>) => {
@@ -36,17 +45,17 @@ const RdsAvatar: FC<RdsAvatarProps> = ({ classes, items, src, document }) => {
   };
 
   return (
-    <>
+    <div className={classes.root} data-testid="rds-avatar">
       {items ? (
         <RdsMenu document={document} items={mergeItems(items)} anchorEl={anchorEl} onClose={onClose}>
-          <IconButton data-testid="rds-avatar" className={classes.root} onClick={onOpen}>
+          <RdsIconButtonStyled document={document} onClick={onOpen} tooltip={tooltip}>
             <Avatar src={src}></Avatar>
-          </IconButton>
+          </RdsIconButtonStyled>
         </RdsMenu>
       ) : (
         <Avatar src={src}></Avatar>
       )}
-    </>
+    </div>
   );
 };
 

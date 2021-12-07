@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
-import { ThemeOptions, withStyles, createStyles } from '@material-ui/core';
+import { ThemeOptions } from '@material-ui/core';
 import {
   RdsMain,
   RdsContent,
@@ -13,33 +13,25 @@ import {
   RdsLoading
 } from '@rdsystem/components';
 
-const theme: ThemeOptions = {
-  palette: {
-    type: 'light',
-    primary: {
-      light: '#39796b',
-      main: '#004d40',
-      dark: '#00251a',
-      contrastText: '#fff'
-    },
-    secondary: {
-      light: '#ffff8b',
-      main: '#ffee58',
-      dark: '#c9bc1f',
-      contrastText: 'rgba(0, 0, 0, 0.87)'
-    }
-  }
-};
-
-const RdsTitleStyled = withStyles(() =>
-  createStyles({
-    root: {
-      flexGrow: 1
-    }
-  })
-)(RdsTitle);
-
 const Layout2 = () => {
+  const theme: ThemeOptions = {
+    palette: {
+      type: 'light',
+      primary: {
+        light: '#80e27e',
+        main: '#4caf50',
+        dark: '#087f23',
+        contrastText: '#fff'
+      },
+      secondary: {
+        light: '#ffff8b',
+        main: '#ffee58',
+        dark: '#c9bc1f',
+        contrastText: 'rgba(0, 0, 0, 0.87)'
+      }
+    }
+  };
+
   // MemoryRouter is used to work in an iframe.
   // You won't need it on your project. Use BrowserRouter.
 
@@ -48,7 +40,9 @@ const Layout2 = () => {
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent>
           <RdsHeader>
-            <RdsTitleStyled type="span">Layout 2</RdsTitleStyled>
+            <RdsTitle type="span" margin="0 auto 0 0">
+              Layout 2
+            </RdsTitle>
             <RdsAvatar />
           </RdsHeader>
           <RdsMain>
