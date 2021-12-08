@@ -18,7 +18,7 @@ const Toolbar = withStyles((theme: Theme) =>
 /**
  * [RdsHeader Examples](https://diegoavieira.github.io/rdsystem/components/rds-header)
  */
-const RdsHeader: FC<RdsHeaderProps> = ({ children, fixed, color, onToggle, classes, document }) => {
+const RdsHeader: FC<RdsHeaderProps> = ({ children, fixed, color, onToggle, classes, document, toggleTooltip }) => {
   return (
     <AppBar data-testid="rds-header" className={classes.root} position={fixed ? 'fixed' : 'static'} color={color}>
       <Toolbar>
@@ -28,7 +28,7 @@ const RdsHeader: FC<RdsHeaderProps> = ({ children, fixed, color, onToggle, class
             margin="0 4px 0 -12px"
             color="inherit"
             onClick={onToggle}
-            tooltip="Toggle open/close drawer"
+            tooltip={toggleTooltip}
           >
             <MenuIcon />
           </RdsIconButton>

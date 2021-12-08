@@ -16,6 +16,7 @@ export default interface RdsListItemProps extends WithStyles<typeof RdsListItemS
     items?: RdsListItemProps['item'][];
     hidden?: boolean;
     subheader?: string;
+    avatar?: string;
   };
   /**
    * Nested index. Default is 0;

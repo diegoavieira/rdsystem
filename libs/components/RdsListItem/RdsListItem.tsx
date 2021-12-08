@@ -6,6 +6,8 @@ import {
   ListItemText,
   IconButton,
   Collapse,
+  ListItemAvatar,
+  Avatar,
   ListItemSecondaryAction
 } from '@material-ui/core';
 import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
@@ -37,6 +39,11 @@ const RdsListItem: FC<RdsListItemProps> = ({ classes, item, expanded, onExpand, 
         onClick={() => onClick(item)}
         component="li"
       >
+        {item.avatar && (
+          <ListItemAvatar className={classes.avatar}>
+            <Avatar src={item.avatar}></Avatar>
+          </ListItemAvatar>
+        )}
         {item.icon && <ListItemIcon className={classes.icon}>{item.icon}</ListItemIcon>}
         <ListItemText primary={item.primary} secondary={item.secondary} />
         {item.secondaryAction && <ListItemSecondaryAction>{item.secondaryAction}</ListItemSecondaryAction>}

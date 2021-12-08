@@ -9,6 +9,7 @@ const RdsListItemStyles = (theme: Theme) =>
       minWidth: 0,
       marginRight: theme.spacing(2)
     },
+    avatar: {},
     expandIcon: {
       padding: 0,
       '&:hover': {

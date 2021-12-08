@@ -6,14 +6,14 @@ import RdsImageStyles from './RdsImage.styles';
 /**
  * [RdsImage Examples](https://diegoavieira.github.io/rdsystem/components/rds-image)
  */
-const RdsImage: FC<RdsImageProps> = ({ classes, src, width, height }) => {
+const RdsImage: FC<RdsImageProps> = ({ classes, src, width, height, fit }) => {
   return (
     <img
       data-testid="rds-image"
       className={classes.root}
       src={src}
       alt=""
-      style={{ width: width || 'auto', height: height || 'auto' }}
+      style={{ width: width || 'auto', height: height || 'auto', objectFit: fit || 'contain' }}
     />
   );
 };

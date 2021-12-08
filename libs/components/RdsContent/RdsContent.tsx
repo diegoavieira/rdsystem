@@ -26,10 +26,14 @@ const CssBaselineStyled = withStyles((theme: Theme) =>
           borderRadius: 10,
           border: '3px solid transparent',
           backgroundClip: 'content-box'
-        }
+        },
+      iframe: {
+        borderWidth: 0
+      }
     }
   })
 )(CssBaseline);
+
 /**
  * [RdsContent Examples](https://diegoavieira.github.io/rdsystem/components/rds-content)
  */

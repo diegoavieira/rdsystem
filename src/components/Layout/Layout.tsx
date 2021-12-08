@@ -52,7 +52,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
     <BrowserRouter basename={production ? '/rdsystem' : '/'}>
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
-          <RdsHeader fixed onToggle={onToggle}>
+          <RdsHeader fixed onToggle={onToggle} toggleTooltip="Toggle open/close drawer">
             <RdsTitle type="span" margin="0 auto 0 0">
               React Design System
             </RdsTitle>

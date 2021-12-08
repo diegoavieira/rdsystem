@@ -5,8 +5,7 @@ const RdsImageStyles = () =>
     root: {
       margin: 'auto 0',
       maxWidth: '100%',
-      maxHeight: '100%',
-      objectFit: 'cover'
+      maxHeight: '100%'
     }
   });
 

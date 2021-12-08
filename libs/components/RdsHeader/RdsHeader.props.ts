@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { WithStyles } from '@material-ui/core/styles/withStyles';
 import RdsHeaderStyles from './RdsHeader.styles';
 
@@ -22,4 +23,8 @@ export default interface RdsHeaderProps extends WithStyles<typeof RdsHeaderStyle
    * Document.
    */
   document?: Document;
+  /**
+   * Toggle tooltip.
+   */
+  toggleTooltip?: ReactNode;
 }

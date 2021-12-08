@@ -14,4 +14,8 @@ export default interface RdsImageProps extends WithStyles<typeof RdsImageStyles>
    * Image height. Default is auto.
    */
   height?: number | string;
+  /**
+   * Image fit. Default is contain.
+   */
+  fit?: 'contain' | 'cover';
 }
