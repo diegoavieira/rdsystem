@@ -13,7 +13,7 @@ import {
 const GettingStarted = lazy(() => import('@pages/GettingStarted'));
 const LayoutPage = lazy(() => import('@pages/Layout'));
 const ThemePage = lazy(() => import('@pages/Theme'));
-const InstallComponents = lazy(() => import('@pages/Components/Installation'));
+const InstallComponents = lazy(() => import('@pages/components/Installation'));
 
 const drawerNavItems: RdsNavProps['items'] = [
   {
