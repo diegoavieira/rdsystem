@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { ThemeOptions, useTheme, useMediaQuery } from '@material-ui/core';
-import { Brightness4 as Brightness4Icon, Brightness7 as Brightness7Icon } from '@material-ui/icons';
+import { BrightnessHigh as BrightnessHighIcon, BrightnessLow as BrightnessLowIcon } from '@material-ui/icons';
 import {
   RdsMain,
   RdsContent,
@@ -57,7 +57,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
               React Design System
             </RdsTitle>
             <RdsIconButton margin="0 -8px 0 0" color="inherit" onClick={onType} tooltip="Toggle ligh/dark theme">
-              {type === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+              {type === 'light' ? <BrightnessHighIcon /> : <BrightnessLowIcon />}
             </RdsIconButton>
           </RdsHeader>
           <RdsDrawer hasHeaderFixed isMobile={isMobile} toggle={toggle} onToggle={onToggle}>

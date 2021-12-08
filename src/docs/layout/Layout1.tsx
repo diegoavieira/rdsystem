@@ -1,7 +1,7 @@
 import React, { FC, Suspense, useEffect, useState } from 'react';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
 import { ThemeOptions, useTheme, useMediaQuery } from '@material-ui/core';
-import { Brightness4 as Brightness4Icon, Brightness7 as Brightness7Icon } from '@material-ui/icons';
+import { BrightnessHigh as BrightnessHighIcon, BrightnessLow as BrightnessLowIcon } from '@material-ui/icons';
 import {
   RdsMain,
   RdsContent,
@@ -84,6 +84,15 @@ const Layout1: FC<{ document?: Document }> = ({ document }) => {
       primary: 'User'
     },
     {
+      key: 'theme',
+      primary: 'Brightness',
+      secondaryAction: (
+        <RdsIconButton document={document} margin="0 -12px 0 0" onClick={onType} tooltip="Toggle ligh/dark theme">
+          {type === 'light' ? <BrightnessHighIcon /> : <BrightnessLowIcon />}
+        </RdsIconButton>
+      )
+    },
+    {
       key: 'logout',
       primary: 'Logout',
       action: (item) => console.log(item)
@@ -114,7 +123,7 @@ const Layout1: FC<{ document?: Document }> = ({ document }) => {
               onClick={onType}
               tooltip="Toggle ligh/dark theme"
             >
-              {type === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+              {type === 'light' ? <BrightnessHighIcon /> : <BrightnessLowIcon />}
             </RdsIconButton>
             <RdsAvatar items={avatrItems} document={document} tooltip="Profile" />
           </RdsHeader>

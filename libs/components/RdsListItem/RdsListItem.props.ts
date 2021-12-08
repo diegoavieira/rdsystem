@@ -12,6 +12,7 @@ export default interface RdsListItemProps extends WithStyles<typeof RdsListItemS
     primary?: ReactNode;
     secondary?: ReactNode;
     action?: (item: RdsListItemProps['item']) => void;
+    secondaryAction?: ReactNode;
     items?: RdsListItemProps['item'][];
     hidden?: boolean;
     subheader?: string;

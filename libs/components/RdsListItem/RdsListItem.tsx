@@ -1,5 +1,13 @@
 import React, { FC } from 'react';
-import { withStyles, ListItem, ListItemIcon, ListItemText, IconButton, Collapse } from '@material-ui/core';
+import {
+  withStyles,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  IconButton,
+  Collapse,
+  ListItemSecondaryAction
+} from '@material-ui/core';
 import { ExpandMore as ExpandMoreIcon } from '@material-ui/icons';
 import RdsListItemProps from './RdsListItem.props';
 import RdsListItemStyles from './RdsListItem.styles';
@@ -31,6 +39,7 @@ const RdsListItem: FC<RdsListItemProps> = ({ classes, item, expanded, onExpand, 
       >
         {item.icon && <ListItemIcon className={classes.icon}>{item.icon}</ListItemIcon>}
         <ListItemText primary={item.primary} secondary={item.secondary} />
+        {item.secondaryAction && <ListItemSecondaryAction>{item.secondaryAction}</ListItemSecondaryAction>}
         {item.items && (
           <IconButton
             disableRipple

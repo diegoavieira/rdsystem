@@ -6,4 +6,8 @@ export default interface RdsLoadingProps extends WithStyles<typeof RdsLoadingSty
    * Open and close. Default is true;
    */
   toggle?: boolean;
+  /**
+   * If not has `RdsHeader`.
+   */
+  notHasHeader?: boolean;
 }
