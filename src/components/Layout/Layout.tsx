@@ -39,6 +39,9 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
         dark: '#c9bc1f',
         contrastText: 'rgba(0, 0, 0, 0.87)'
       }
+    },
+    typography: {
+      htmlFontSize: 16
     }
   };
 
@@ -52,7 +55,12 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
     <BrowserRouter basename={production ? '/rdsystem' : '/'}>
       <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
-          <RdsHeader fixed onToggle={onToggle} toggleTooltip="Toggle open/close drawer">
+          <RdsHeader
+            fixed
+            onToggle={onToggle}
+            toggleTooltip="Toggle open/close drawer"
+            color={type === 'light' ? 'primary' : 'inherit'}
+          >
             <RdsTitle type="span" margin="0 auto 0 0">
               React Design System
             </RdsTitle>

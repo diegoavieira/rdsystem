@@ -1,14 +1,13 @@
 import React from 'react';
 import { RdsContainer } from '@rdsystem/components';
 import { Marked } from '@components';
-import { layout } from '@docs';
 
-const Layout = () => {
+const GettingStartedPage = () => {
   return (
     <RdsContainer>
-      <Marked file="src/docs/layout/layout.md" sandboxes={layout} />
+      <Marked file="src/docs/getting-started/getting-started.md" />
     </RdsContainer>
   );
 };
 
-export default Layout;
+export default GettingStartedPage;

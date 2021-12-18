@@ -48,3 +48,6 @@ export * from './RdsLoading';
 
 export { default as RdsIconButton } from './RdsIconButton';
 export * from './RdsIconButton';
+
+export { default as RdsTable } from './RdsTable';
+export * from './RdsTable';

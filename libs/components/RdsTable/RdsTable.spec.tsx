@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import GettingStarted from './GettingStarted';
+import RdsTable from './RdsTable';
 
-describe('<GettingStarted />', () => {
+describe('<RdsTable />', () => {
   test('should has rendered', () => {
-    render(<GettingStarted />);
+    render(<RdsTable />);
   });
 });

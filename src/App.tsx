@@ -10,10 +10,11 @@ import {
   BubbleChartOutlined as BubbleChartOutlinedIcon
 } from '@material-ui/icons';
 
-const GettingStarted = lazy(() => import('@pages/GettingStarted'));
-const LayoutPage = lazy(() => import('@pages/Layout'));
-const ThemePage = lazy(() => import('@pages/Theme'));
-const InstallComponents = lazy(() => import('@pages/components/Installation'));
+const GettingStartedPage = lazy(() => import('@pages/GettingStartedPage'));
+const LayoutPage = lazy(() => import('@pages/LayoutPage'));
+const ThemePage = lazy(() => import('@pages/ThemePage'));
+const InstallComponentsPage = lazy(() => import('@pages/InstallComponentsPage'));
+const RdsTablePage = lazy(() => import('@pages/RdsTablePage'));
 
 const drawerNavItems: RdsNavProps['items'] = [
   {
@@ -48,14 +49,9 @@ const drawerNavItems: RdsNavProps['items'] = [
             path: '/components/installation'
           },
           {
-            key: 'rds-content',
-            title: 'RdsContent',
-            path: '/components/rds-content'
-          },
-          {
-            key: 'rds-container',
-            title: 'RdsContainer',
-            path: '/components/rds-container'
+            key: 'rds-table',
+            title: 'RdsTable',
+            path: '/components/rds-table'
           }
         ]
       },
@@ -66,7 +62,7 @@ const drawerNavItems: RdsNavProps['items'] = [
         items: [
           {
             key: 'rds-use-fetch',
-            title: 'rdsUseFecth',
+            title: 'rdsUseFetch',
             path: '/hooks/rds-use-fetch'
           }
         ]
@@ -78,7 +74,7 @@ const drawerNavItems: RdsNavProps['items'] = [
 const App = () => (
   <Layout drawerNavItems={drawerNavItems}>
     <Route exact path="/">
-      <GettingStarted />
+      <GettingStartedPage />
     </Route>
     <Route path="/layout">
       <LayoutPage />
@@ -87,7 +83,10 @@ const App = () => (
       <ThemePage />
     </Route>
     <Route path="/components/installation">
-      <InstallComponents />
+      <InstallComponentsPage />
+    </Route>
+    <Route path="/components/rds-table">
+      <RdsTablePage />
     </Route>
   </Layout>
 );

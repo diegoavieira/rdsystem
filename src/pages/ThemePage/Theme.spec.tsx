@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Installation from './Installation';
+import ThemePage from './ThemePage';
 
-describe('<Installation />', () => {
+describe('<ThemePage />', () => {
   test('should has rendered', () => {
-    render(<Installation />);
+    render(<ThemePage />);
   });
 });

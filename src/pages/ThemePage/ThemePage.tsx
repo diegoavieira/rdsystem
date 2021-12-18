@@ -2,12 +2,12 @@ import React from 'react';
 import { RdsContainer } from '@rdsystem/components';
 import { Marked } from '@components';
 
-const GettingStarted = () => {
+const ThemePage = () => {
   return (
     <RdsContainer>
-      <Marked file="src/docs/components/installation/installation.md" />
+      <Marked file="src/docs/theme/theme.md" />
     </RdsContainer>
   );
 };
 
-export default GettingStarted;
+export default ThemePage;

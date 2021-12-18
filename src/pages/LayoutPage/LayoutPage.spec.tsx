@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Theme from './Theme';
+import LayoutPage from './LayoutPage';
 
-describe('<Theme />', () => {
+describe('<LayoutPage />', () => {
   test('should has rendered', () => {
-    render(<Theme />);
+    render(<LayoutPage />);
   });
 });
