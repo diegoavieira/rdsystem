@@ -39,9 +39,6 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
         dark: '#c9bc1f',
         contrastText: 'rgba(0, 0, 0, 0.87)'
       }
-    },
-    typography: {
-      htmlFontSize: 16
     }
   };
 

@@ -7,12 +7,12 @@ import clsx from 'clsx';
 /**
  * [RdsContainer Examples](https://diegoavieira.github.io/rdsystem/components/rds-container)
  */
-const RdsContainer: FC<RdsContainerProps> = ({ children, maxWidth, disableGutters, classes }) => {
+const RdsContainer: FC<RdsContainerProps> = ({ children, maxWidth = 'md', disableGutters, classes }) => {
   return (
     <Container
       data-testid="rds-container"
       className={clsx(classes.root, { [classes.disableGutters]: disableGutters })}
-      maxWidth={maxWidth ?? 'md'}
+      maxWidth={maxWidth}
       disableGutters={disableGutters}
     >
       {children}

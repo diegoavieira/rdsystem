@@ -24,7 +24,7 @@ const RdsTablePage = () => {
       {/* <Marked file="src/docs/components/installation/installation.md" /> */}
       <Card>
         <CardContent>
-          <RdsTable height="calc(100vh - 144px)" columns={columns} />
+          <RdsTable height="calc(100vh - 128px)" columns={columns} />
         </CardContent>
       </Card>
     </RdsContainer>
