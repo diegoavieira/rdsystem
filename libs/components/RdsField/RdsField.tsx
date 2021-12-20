@@ -38,7 +38,7 @@ const RdsField: FC<RdsFieldProps> = ({
   disabled,
   required
 }) => {
-  const [field, meta] = useField({ name });
+  const [field, meta] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
 
   return (

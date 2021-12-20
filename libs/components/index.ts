@@ -54,3 +54,6 @@ export * from './RdsTable';
 
 export { default as RdsField } from './RdsField';
 export * from './RdsField';
+
+export { default as RdsForm } from './RdsForm';
+export * from './RdsForm';

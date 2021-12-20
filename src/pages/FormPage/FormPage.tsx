@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Card, CardContent } from '@material-ui/core';
-import { RdsContainer, RdsField } from '@rdsystem/components';
-import { Form, Formik } from 'formik';
+import { RdsContainer, RdsField, RdsForm } from '@rdsystem/components';
 import * as Yup from 'yup';
 // import { Marked } from '@components';
 
@@ -10,7 +9,7 @@ const initialValues = {
   email: ''
 };
 
-const validationSchema = Yup.object({
+const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(4),
   email: Yup.string().email().required()
 });
@@ -21,7 +20,7 @@ const FormPage = () => {
       {/* <Marked file="src/docs/components/installation/installation.md" /> */}
       <Card>
         <CardContent>
-          <Formik
+          <RdsForm
             validationSchema={validationSchema}
             initialValues={initialValues}
             onSubmit={(values, actions) => {
@@ -29,12 +28,11 @@ const FormPage = () => {
               console.log(actions);
             }}
           >
-            <Form autoComplete="off" noValidate>
-              <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="test" required />
-              <RdsField name="email" label="Email" dense disabled />
-              <Button type="submit">Submit</Button>
-            </Form>
-          </Formik>
+            <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="test" required />
+            <RdsField name="email" label="Email" />
+            <Button type="submit">Submit</Button>
+            <Button type="reset">Reset</Button>
+          </RdsForm>
         </CardContent>
       </Card>
     </RdsContainer>
