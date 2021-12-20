@@ -16,7 +16,7 @@ import clsx from 'clsx';
 
 const TableCellStyled = withStyles((theme: Theme) =>
   createStyles({
-    root: Object.assign(theme.typography.body1, {
+    root: Object.assign({}, theme.typography.body1, {
       padding: '11.5px 16px',
       whiteSpace: 'nowrap'
     }),

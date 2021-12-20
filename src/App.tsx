@@ -7,12 +7,14 @@ import {
   DashboardOutlined as DashboardOutlinedIcon,
   WebOutlined as WebOutlinedicon,
   ColorLensOutlined as ColorLensOutlinedIcon,
+  ListAltOutlined as ListAltOutlinedIcon,
   BubbleChartOutlined as BubbleChartOutlinedIcon
 } from '@material-ui/icons';
 
 const GettingStartedPage = lazy(() => import('@pages/GettingStartedPage'));
 const LayoutPage = lazy(() => import('@pages/LayoutPage'));
 const ThemePage = lazy(() => import('@pages/ThemePage'));
+const FormPage = lazy(() => import('@pages/FormPage'));
 const InstallComponentsPage = lazy(() => import('@pages/InstallComponentsPage'));
 const RdsTablePage = lazy(() => import('@pages/RdsTablePage'));
 
@@ -37,6 +39,12 @@ const drawerNavItems: RdsNavProps['items'] = [
         title: 'Theme',
         icon: <ColorLensOutlinedIcon />,
         path: '/theme'
+      },
+      {
+        key: 'form',
+        title: 'Form',
+        icon: <ListAltOutlinedIcon />,
+        path: '/form'
       },
       {
         key: 'components',
@@ -81,6 +89,9 @@ const App = () => (
     </Route>
     <Route path="/theme">
       <ThemePage />
+    </Route>
+    <Route path="/form">
+      <FormPage />
     </Route>
     <Route path="/components/installation">
       <InstallComponentsPage />

@@ -51,3 +51,6 @@ export * from './RdsIconButton';
 
 export { default as RdsTable } from './RdsTable';
 export * from './RdsTable';
+
+export { default as RdsField } from './RdsField';
+export * from './RdsField';
