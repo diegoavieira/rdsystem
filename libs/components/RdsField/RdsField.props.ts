@@ -22,4 +22,16 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    * Text margin. Default is 0.
    */
   margin?: string | number;
+  /**
+   * Dense.
+   */
+  dense?: boolean;
+  /**
+   * Disabled.
+   */
+  disabled?: boolean;
+  /**
+   * Required.
+   */
+  required?: boolean;
 }

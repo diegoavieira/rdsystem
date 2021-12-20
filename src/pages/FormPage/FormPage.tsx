@@ -30,8 +30,8 @@ const FormPage = () => {
             }}
           >
             <Form autoComplete="off" noValidate>
-              <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="test" />
-              <RdsField name="email" label="Email" />
+              <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="test" required />
+              <RdsField name="email" label="Email" dense disabled />
               <Button type="submit">Submit</Button>
             </Form>
           </Formik>
