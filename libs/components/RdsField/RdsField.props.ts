@@ -24,6 +24,10 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    */
   margin?: string | number;
   /**
+   * Width. Default is initial.
+   */
+  width?: string;
+  /**
    * Dense.
    */
   dense?: boolean;
@@ -51,4 +55,20 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    * Timepicker.
    */
   timepicker?: boolean;
+  /**
+   * Multiline.
+   */
+  multiline?: boolean;
+  /**
+   * Max rows. Default is 4.
+   */
+  maxRows?: string | number;
+  /**
+   * Min rows. Default is 4.
+   */
+  minRows?: string | number;
+  /**
+   * Min when type is number. Default is 0;
+   */
+  min?: number;
 }

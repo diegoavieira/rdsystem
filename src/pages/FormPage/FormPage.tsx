@@ -7,7 +7,10 @@ import * as Yup from 'yup';
 const initialValues = {
   name: '',
   email: '',
-  date: new Date()
+  date: new Date(),
+  time: new Date(),
+  multiline: '',
+  number: 2
 };
 
 const validationSchema = Yup.object().shape({
@@ -16,8 +19,9 @@ const validationSchema = Yup.object().shape({
   date: Yup.date()
     .typeError('Format invalid')
     .min(new Date().toDateString(), 'Minimum date is today')
+    .nullable()
     .required('Required'),
-  time: Yup.date().typeError('Format invalid').required('Required')
+  time: Yup.date().nullable().required('Required')
 });
 
 const FormPage = () => {
@@ -34,22 +38,25 @@ const FormPage = () => {
               console.log(actions);
             }}
           >
-            <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="Helper text" required />
-            <RdsField
-              name="email"
-              label="Email"
-              margin="0 0 8px 0"
-              required
-              helperText={
-                <span>
-                  <a href="#">Helper text click</a>
-                </span>
-              }
-            />
-
-            <RdsField name="date" datepicker label="Date" required minDate={new Date()} margin="0 16px 8px 0" />
-            <RdsField name="time" timepicker label="Time" required minDate={new Date()} margin="0 0 8px 0" />
-
+            <Box display="flex" flexDirection="column" alignItems="start">
+              <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="Helper text" required />
+              <RdsField
+                name="email"
+                label="Email"
+                margin="0 0 8px 0"
+                width="100%"
+                required
+                helperText={
+                  <span>
+                    <a href="#">Helper text click</a>
+                  </span>
+                }
+              />
+              <RdsField name="date" datepicker label="Date" required minDate={new Date()} margin="0 16px 8px 0" />
+              <RdsField name="time" timepicker label="Time" required margin="0 0 8px 0" />
+              <RdsField name="multiline" multiline label="Multiline" margin="0 0 8px 0" />
+              <RdsField name="number" type="number" label="Number" margin="0 0 8px 0" />
+            </Box>
             <Box>
               <Button type="submit">Submit</Button>
               <Button type="reset">Reset</Button>

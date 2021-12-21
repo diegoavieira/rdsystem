@@ -37,13 +37,18 @@ const RdsField: FC<RdsFieldProps> = ({
   hideHelperText,
   helperText = ' ',
   margin = 0,
+  width = 'initial',
   dense,
   disabled,
   required,
   type = 'text',
   datepicker,
   minDate,
-  timepicker
+  timepicker,
+  multiline,
+  minRows = 4,
+  maxRows = 4,
+  min = 0
 }) => {
   const [field, meta, helpers] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
@@ -59,12 +64,16 @@ const RdsField: FC<RdsFieldProps> = ({
           label={label}
           type={type}
           helperText={hideHelperText ? null : error || helperText}
-          style={{ margin }}
+          style={{ margin, width }}
           error={!!error}
-          fullWidth
           InputProps={{ classes: OutlinedInputStyled() }}
+          FormHelperTextProps={{ style: { maxWidth: 'fit-content' } }}
+          inputProps={{ className: 'rds-scrollbar', min }}
           disabled={disabled}
           required={required}
+          multiline={multiline}
+          minRows={minRows}
+          maxRows={maxRows}
           {...field}
         />
       )}
@@ -87,7 +96,8 @@ const RdsField: FC<RdsFieldProps> = ({
             size={dense ? 'small' : 'medium'}
             disabled={disabled}
             required={required}
-            style={{ margin }}
+            style={{ margin, width }}
+            FormHelperTextProps={{ style: { maxWidth: 'fit-content' } }}
             minDate={minDate}
             keyboardIcon={<EventOutlinedIcon />}
           />
@@ -113,7 +123,8 @@ const RdsField: FC<RdsFieldProps> = ({
             size={dense ? 'small' : 'medium'}
             disabled={disabled}
             required={required}
-            style={{ margin }}
+            style={{ margin, width }}
+            FormHelperTextProps={{ style: { maxWidth: 'fit-content' } }}
             keyboardIcon={<AccessTimeOutlinedIcon />}
           />
         </MuiPickersUtilsProvider>
