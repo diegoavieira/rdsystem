@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Button, Card, CardContent } from '@material-ui/core';
 import { RdsContainer, RdsField, RdsForm } from '@rdsystem/components';
 import * as Yup from 'yup';
+import RdsListItemProps from '@rdsystem/components/RdsListItem/RdsListItem.props';
 // import { Marked } from '@components';
 
 const initialValues = {
@@ -10,7 +11,17 @@ const initialValues = {
   date: new Date(),
   time: new Date(),
   multiline: '',
-  number: 2
+  number: 2,
+  select: {
+    key: 'test',
+    primary: 'test'
+  },
+  multiple: [
+    {
+      key: 'test',
+      primary: 'test'
+    }
+  ]
 };
 
 const validationSchema = Yup.object().shape({
@@ -21,8 +32,32 @@ const validationSchema = Yup.object().shape({
     .min(new Date().toDateString(), 'Minimum date is today')
     .nullable()
     .required('Required'),
-  time: Yup.date().nullable().required('Required')
+  time: Yup.date().nullable().required('Required'),
+  select: Yup.object().nullable().required('Required'),
+  multiple: Yup.array().required('Required')
 });
+
+const items: RdsListItemProps['item'][] = [
+  {
+    key: 'test',
+    primary: 'test',
+    items: [
+      {
+        key: 'expanded',
+        primary: 'Expanded'
+      }
+    ]
+  },
+  {
+    key: 'test2',
+    primary: 'test2',
+    secondary: 'secondary'
+  },
+  {
+    key: 'test3',
+    primary: 'test3'
+  }
+];
 
 const FormPage = () => {
   return (
@@ -39,6 +74,17 @@ const FormPage = () => {
             }}
           >
             <Box display="flex" flexDirection="column" alignItems="start">
+              <RdsField name="select" select items={items} label="Select" margin="0 0 8px 0" required width="50%" />
+              {/* <RdsField
+                name="multiple"
+                select
+                items={items}
+                multiple
+                label="Multiple"
+                margin="0 0 8px 0"
+                required
+                width="50%"
+              /> */}
               <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="Helper text" required />
               <RdsField
                 name="email"

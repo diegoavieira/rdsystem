@@ -1,5 +1,6 @@
 import { WithStyles } from '@material-ui/core/styles/withStyles';
 import { ReactNode } from 'react';
+import RdsListItemProps from '../RdsListItem/RdsListItem.props';
 import RdsFieldStyles from './RdsField.styles';
 
 export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles> {
@@ -71,4 +72,20 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    * Min when type is number. Default is 0;
    */
   min?: number;
+  /**
+   * Select;
+   */
+  select?: boolean;
+  /**
+   * Select options. Default is [].
+   */
+  items?: RdsListItemProps['item'][];
+  /**
+   * Selected attribute. Default is key.
+   */
+  selectedAttr?: string;
+  /**
+   * Multiple items.
+   */
+  multiple?: boolean;
 }

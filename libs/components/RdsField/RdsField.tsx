@@ -1,12 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, ForwardedRef, forwardRef } from 'react';
 import { withStyles, TextField, Theme } from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 import { AccessTimeOutlined as AccessTimeOutlinedIcon, EventOutlined as EventOutlinedIcon } from '@material-ui/icons';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, KeyboardTimePicker } from '@material-ui/pickers';
+import { createStyles, makeStyles } from '@material-ui/styles';
 import MomentUtils from '@date-io/moment';
 import { useField } from 'formik';
 import RdsFieldProps from './RdsField.props';
 import RdsFieldStyles from './RdsField.styles';
-import { createStyles, makeStyles } from '@material-ui/styles';
+import RdsList from '../RdsList';
+import RdsListItemProps from '../RdsListItem/RdsListItem.props';
 
 const OutlinedInputStyled = makeStyles(
   (theme: Theme) =>
@@ -48,14 +51,44 @@ const RdsField: FC<RdsFieldProps> = ({
   multiline,
   minRows = 4,
   maxRows = 4,
-  min = 0
+  min = 0,
+  select,
+  selectedAttr = 'key',
+  items = [],
+  multiple
 }) => {
   const [field, meta, helpers] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
 
+  const mergeItems = (items: RdsListItemProps['item'][]) => {
+    return items.map((item) => {
+      if (item.items) {
+        console.log('akiiiiiiiiiiiii', item.items);
+        // mergeItems(item.items);
+      }
+
+      if (item.action) {
+        return {
+          ...item,
+          action: () => {
+            item.action && item.action(item);
+            console.log(item);
+          }
+        };
+      } else {
+        return {
+          ...item,
+          action: () => {
+            console.log(item);
+          }
+        };
+      }
+    });
+  };
+
   return (
     <>
-      {!datepicker && !timepicker && (
+      {!datepicker && !timepicker && !select && (
         <TextField
           data-testid="rds-field"
           className={classes.root}
@@ -128,6 +161,51 @@ const RdsField: FC<RdsFieldProps> = ({
             keyboardIcon={<AccessTimeOutlinedIcon />}
           />
         </MuiPickersUtilsProvider>
+      )}
+      {select && (
+        <Autocomplete
+          data-testid="rds-field"
+          className={classes.root}
+          options={items}
+          getOptionLabel={(option) => option[selectedAttr]}
+          getOptionSelected={(option, value) => option[selectedAttr] === value[selectedAttr]}
+          style={{ margin, width }}
+          onChange={(event, value) => helpers.setValue(value)}
+          onBlur={() => helpers.setTouched(true)}
+          selectOnFocus={false}
+          value={field.value}
+          openText={''}
+          clearText={''}
+          disabled={disabled}
+          multiple={multiple}
+          disableCloseOnSelect={multiple}
+          ListboxComponent={forwardRef(function ListboxComponent(props, ref) {
+            console.log(props);
+            return (
+              <div ref={ref as ForwardedRef<HTMLDivElement>}>
+                <RdsList items={mergeItems(items)} />
+              </div>
+            );
+          })}
+          open
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              variant="outlined"
+              name={name}
+              label={label}
+              size={dense ? 'small' : 'medium'}
+              helperText={hideHelperText ? null : error || helperText}
+              InputProps={{
+                ...params.InputProps,
+                classes: OutlinedInputStyled()
+              }}
+              error={!!error}
+              FormHelperTextProps={{ style: { maxWidth: 'fit-content' } }}
+              required={required}
+            />
+          )}
+        />
       )}
     </>
   );
