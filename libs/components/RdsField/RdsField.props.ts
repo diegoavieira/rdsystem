@@ -1,4 +1,5 @@
 import { WithStyles } from '@material-ui/core/styles/withStyles';
+import { ReactNode } from 'react';
 import RdsFieldStyles from './RdsField.styles';
 
 export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles> {
@@ -13,13 +14,13 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
   /**
    * Helper text.
    */
-  helperText?: string;
+  helperText?: string | ReactNode;
   /**
    * Hide helperText.
    */
   hideHelperText?: boolean;
   /**
-   * Text margin. Default is 0.
+   * Margin. Default is 0.
    */
   margin?: string | number;
   /**
@@ -34,4 +35,20 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    * Required.
    */
   required?: boolean;
+  /**
+   * Input type. Default is text.
+   */
+  type?: 'text' | 'number' | 'file' | 'password' | 'tel' | 'email';
+  /**
+   * Datepicker.
+   */
+  datepicker?: boolean;
+  /**
+   * Min date.
+   */
+  minDate?: Date;
+  /**
+   * Timepicker.
+   */
+  timepicker?: boolean;
 }

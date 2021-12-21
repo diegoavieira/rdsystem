@@ -22,6 +22,10 @@ import {
   DashboardOutlined as DashboardOutlinedIcon
 } from '@material-ui/icons';
 import RdsListItemProps from '@rdsystem/components/RdsListItem/RdsListItem.props';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+
+moment.locale('pt-br');
 
 const drawerNavItems: RdsNavProps['items'] = [
   {
