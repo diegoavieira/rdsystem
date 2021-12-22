@@ -1,15 +1,24 @@
-import React, { FC, ForwardedRef, forwardRef } from 'react';
-import { withStyles, TextField, Theme } from '@material-ui/core';
+import React, { FC, useRef, useState } from 'react';
+import {
+  withStyles,
+  TextField,
+  Theme,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+  ListItemIcon,
+  createStyles,
+  makeStyles,
+  Checkbox,
+  Chip
+} from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { AccessTimeOutlined as AccessTimeOutlinedIcon, EventOutlined as EventOutlinedIcon } from '@material-ui/icons';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, KeyboardTimePicker } from '@material-ui/pickers';
-import { createStyles, makeStyles } from '@material-ui/styles';
 import MomentUtils from '@date-io/moment';
 import { useField } from 'formik';
-import RdsFieldProps from './RdsField.props';
+import RdsFieldProps, { RdsOptionProps } from './RdsField.props';
 import RdsFieldStyles from './RdsField.styles';
-import RdsList from '../RdsList';
-import RdsListItemProps from '../RdsListItem/RdsListItem.props';
 
 const OutlinedInputStyled = makeStyles(
   (theme: Theme) =>
@@ -29,6 +38,17 @@ const OutlinedInputStyled = makeStyles(
     }),
   { name: 'OutlinedInputStyled' }
 );
+
+const useDebounce = (onSearch?: (value: string) => void, delay = 0) => {
+  const timeoutRef = useRef<number | null | NodeJS.Timeout>(null);
+
+  const debouncedChange = (value: string) => {
+    clearTimeout(timeoutRef?.current as number);
+    timeoutRef.current = setTimeout(() => onSearch && onSearch(value), delay);
+  };
+
+  return debouncedChange;
+};
 
 /**
  * [RdsField Examples](https://diegoavieira.github.io/rdsystem/components/rds-field)
@@ -53,29 +73,40 @@ const RdsField: FC<RdsFieldProps> = ({
   maxRows = 4,
   min = 0,
   select,
-  selectedAttr = 'key',
-  items = [],
-  multiple
+  selectedKey = 'key',
+  selectedLabel = 'primary',
+  options = [],
+  multiple,
+  placeholder,
+  notFoundText = 'Not found results',
+  hideSelectedLabel,
+  onOptionSelected,
+  onSearch,
+  loading,
+  searchDelay = 520
 }) => {
   const [field, meta, helpers] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
+  const [inputValue, setInputValue] = useState('');
 
-  const mergeItems = (items: RdsListItemProps['item'][]): RdsListItemProps['item'][] => {
-    return items.map((item) => {
-      if (item.items) {
-        return { ...item, items: mergeItems(item.items) };
-      } else {
-        return {
-          ...item,
-          action: () => {
-            item.action && item.action(item);
-            console.log('click');
-            helpers.setValue(item);
-          }
-        };
-      }
-    });
-  };
+  const onSearchDebounce = useDebounce(onSearch, searchDelay);
+
+  const RdsOption: FC<RdsOptionProps> = ({ primary, secondary, avatar, icon, selected }) => (
+    <>
+      {multiple && (
+        <ListItemIcon className={classes.optionCheckbox}>
+          <Checkbox edge="start" checked={selected} />
+        </ListItemIcon>
+      )}
+      {avatar && (
+        <ListItemAvatar>
+          <Avatar src={avatar}></Avatar>
+        </ListItemAvatar>
+      )}
+      {icon && <ListItemIcon className={classes.optionIcon}>{icon}</ListItemIcon>}
+      <ListItemText primary={primary} secondary={secondary} />
+    </>
+  );
 
   return (
     <>
@@ -98,6 +129,7 @@ const RdsField: FC<RdsFieldProps> = ({
           multiline={multiline}
           minRows={minRows}
           maxRows={maxRows}
+          placeholder={placeholder}
           {...field}
         />
       )}
@@ -157,27 +189,39 @@ const RdsField: FC<RdsFieldProps> = ({
         <Autocomplete
           data-testid="rds-field"
           className={classes.root}
-          options={items}
-          getOptionLabel={(option) => option[selectedAttr]}
-          getOptionSelected={(option, value) => option[selectedAttr] === value[selectedAttr]}
+          options={options.filter(({ hidden }) => !hidden)}
+          limitTags={2}
+          getOptionLabel={(option) => option[selectedLabel]}
+          getOptionSelected={(option, value) => option[selectedKey] === value[selectedKey]}
           style={{ margin, width }}
-          onChange={(event, value) => helpers.setValue(value)}
-          onBlur={() => helpers.setTouched(true)}
           selectOnFocus={false}
+          onChange={(event, value) => {
+            helpers.setValue(value);
+            onOptionSelected && onOptionSelected(value);
+          }}
           value={field.value}
+          onInputChange={(event, value, reason) => {
+            if (hideSelectedLabel && reason !== 'reset') {
+              setInputValue(value);
+            }
+
+            if (!hideSelectedLabel) {
+              setInputValue(value);
+            }
+
+            if (reason !== 'reset') {
+              onSearchDebounce(value);
+            }
+          }}
+          inputValue={inputValue}
+          onBlur={() => helpers.setTouched(true)}
           openText={''}
           clearText={''}
           disabled={disabled}
           multiple={multiple}
           disableCloseOnSelect={multiple}
-          open
-          ListboxComponent={forwardRef(function ListboxComponent(props, ref) {
-            return (
-              <div ref={ref as ForwardedRef<HTMLDivElement>}>
-                <RdsList items={mergeItems(items)} />
-              </div>
-            );
-          })}
+          noOptionsText={notFoundText}
+          loading={loading}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -193,8 +237,26 @@ const RdsField: FC<RdsFieldProps> = ({
               error={!!error}
               FormHelperTextProps={{ style: { maxWidth: 'fit-content' } }}
               required={required}
+              placeholder={placeholder || 'Search...'}
             />
           )}
+          renderOption={(option: RdsOptionProps, { selected }) => {
+            return <RdsOption {...option} selected={selected} />;
+          }}
+          renderTags={(value, getTagProps) =>
+            !hideSelectedLabel &&
+            value.map((option, index) => (
+              <Chip
+                key={index}
+                label={option[selectedLabel]}
+                icon={option.icon}
+                avatar={option.avatar}
+                size={dense ? 'small' : 'medium'}
+                style={{ margin: '0 3px 0 0' }}
+                {...getTagProps({ index })}
+              />
+            ))
+          }
         />
       )}
     </>

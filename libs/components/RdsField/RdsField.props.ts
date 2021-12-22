@@ -1,8 +1,17 @@
 import { WithStyles } from '@material-ui/core/styles/withStyles';
 import { ReactNode } from 'react';
-import RdsListItemProps from '../RdsListItem/RdsListItem.props';
 import RdsFieldStyles from './RdsField.styles';
 
+export interface RdsOptionProps {
+  key: string;
+  icon?: JSX.Element;
+  primary?: ReactNode;
+  secondary?: ReactNode;
+  hidden?: boolean;
+  subheader?: string;
+  avatar?: string;
+  selected?: boolean;
+}
 export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles> {
   /**
    * Name.
@@ -79,13 +88,45 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
   /**
    * Select options. Default is [].
    */
-  items?: RdsListItemProps['item'][];
+  options?: RdsOptionProps[];
   /**
    * Selected attribute. Default is key.
    */
-  selectedAttr?: string;
+  selectedKey?: string;
+  /**
+   * Selected label. Default is primary.
+   */
+  selectedLabel?: string;
   /**
    * Multiple items.
    */
   multiple?: boolean;
+  /**
+   * Placeholder. If select default is Search...
+   */
+  placeholder?: string;
+  /**
+   * Not found text. Default is Not found results.
+   */
+  notFoundText?: string;
+  /**
+   * Hide selected label.
+   */
+  hideSelectedLabel?: boolean;
+  /**
+   * On option selected.
+   */
+  onOptionSelected?: (option: RdsOptionProps) => void;
+  /**
+   * On search.
+   */
+  onSearch?: (query: string) => void;
+  /**
+   * Search delay. Default is 520
+   */
+  searchDelay?: number;
+  /**
+   * Loading.
+   */
+  loading?: boolean;
 }

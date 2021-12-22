@@ -1,8 +1,16 @@
-import { createStyles } from '@material-ui/core';
+import { createStyles, Theme } from '@material-ui/core';
 
-const RdsFieldStyles = () =>
+const RdsFieldStyles = (theme: Theme) =>
   createStyles({
-    root: {}
+    root: {},
+    optionIcon: {
+      minWidth: 0,
+      marginRight: theme.spacing(2)
+    },
+    optionCheckbox: {
+      minWidth: 0,
+      marginRight: theme.spacing(1)
+    }
   });
 
 export default RdsFieldStyles;

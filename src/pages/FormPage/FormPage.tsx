@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Card, CardContent } from '@material-ui/core';
 import { RdsContainer, RdsField, RdsForm } from '@rdsystem/components';
 import * as Yup from 'yup';
-import RdsListItemProps from '@rdsystem/components/RdsListItem/RdsListItem.props';
+import { RdsOptionProps } from '@rdsystem/components/RdsField/RdsField.props';
 // import { Marked } from '@components';
 
 const initialValues = {
@@ -12,16 +12,8 @@ const initialValues = {
   time: new Date(),
   multiline: '',
   number: 2,
-  select: {
-    key: 'test',
-    primary: 'test'
-  },
-  multiple: [
-    {
-      key: 'test',
-      primary: 'test'
-    }
-  ]
+  select: null,
+  multiple: [{ key: 'test4', primary: 'Test4' }]
 };
 
 const validationSchema = Yup.object().shape({
@@ -37,34 +29,86 @@ const validationSchema = Yup.object().shape({
   multiple: Yup.array().required('Required')
 });
 
-const items: RdsListItemProps['item'][] = [
+const options: RdsOptionProps[] = [
   {
-    key: 'test',
-    primary: 'test',
-    items: [
-      {
-        key: 'expanded',
-        primary: 'Expanded'
-      }
-    ]
+    key: 'test4',
+    primary: 'Test4'
   },
   {
     key: 'test2',
-    primary: 'test2',
+    primary: 'Test2',
     secondary: 'secondary'
   },
   {
-    key: 'test3',
-    primary: 'test3'
+    key: 'test',
+    primary: 'Test'
   }
 ];
 
+const filterValues = {
+  selected: null,
+  selecteds: []
+};
+
+interface DateProps {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 const FormPage = () => {
+  const [query, setQuery] = useState('');
+  const [filterOptions, setFilterOptions] = useState<RdsOptionProps[]>([]);
+
+  useEffect(() => {
+    const getFetch = async () => {
+      const response = await fetch(`https://jsonplaceholder.typicode.com/todos?limit=10&q=${query}`);
+      const data = await response.json();
+
+      if (data.length) {
+        const options = data.slice(0, 10).map((el: DateProps) => ({ key: `${el.id}`, primary: el.title }));
+        setFilterOptions(options);
+      }
+    };
+
+    if (query) {
+      getFetch();
+    } else {
+      setFilterOptions([]);
+    }
+  }, [query]);
+
   return (
     <RdsContainer>
       {/* <Marked file="src/docs/components/installation/installation.md" /> */}
       <Card>
         <CardContent>
+          <RdsForm initialValues={filterValues} onSubmit={(values) => console.log(values)}>
+            <RdsField
+              name="selected"
+              select
+              options={filterOptions}
+              label="Filter"
+              margin="0 0 8px 0"
+              width="50%"
+              onOptionSelected={(option) => console.log(option)}
+              onSearch={(query) => setQuery(query)}
+              hideSelectedLabel
+            />
+            <RdsField
+              name="selecteds"
+              select
+              options={filterOptions}
+              label="Filter Multiple"
+              margin="0 0 8px 0"
+              width="50%"
+              onOptionSelected={(option) => console.log(option)}
+              onSearch={(query) => setQuery(query)}
+              multiple
+              hideSelectedLabel
+            />
+          </RdsForm>
           <RdsForm
             validationSchema={validationSchema}
             initialValues={initialValues}
@@ -74,17 +118,28 @@ const FormPage = () => {
             }}
           >
             <Box display="flex" flexDirection="column" alignItems="start">
-              <RdsField name="select" select items={items} label="Select" margin="0 0 8px 0" required width="50%" />
-              {/* <RdsField
+              <RdsField
+                name="select"
+                select
+                options={options}
+                label="Select"
+                margin="0 0 8px 0"
+                width="50%"
+                onOptionSelected={(option) => console.log(option)}
+                required
+              />
+              <RdsField
                 name="multiple"
                 select
-                items={items}
+                options={options}
                 multiple
                 label="Multiple"
                 margin="0 0 8px 0"
                 required
                 width="50%"
-              /> */}
+                hideSelectedLabel
+                onOptionSelected={(option) => console.log(option)}
+              />
               <RdsField name="name" label="Name" margin="0 0 8px 0" helperText="Helper text" required />
               <RdsField
                 name="email"
