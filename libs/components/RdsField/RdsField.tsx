@@ -60,26 +60,17 @@ const RdsField: FC<RdsFieldProps> = ({
   const [field, meta, helpers] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
 
-  const mergeItems = (items: RdsListItemProps['item'][]) => {
+  const mergeItems = (items: RdsListItemProps['item'][]): RdsListItemProps['item'][] => {
     return items.map((item) => {
       if (item.items) {
-        console.log('akiiiiiiiiiiiii', item.items);
-        // mergeItems(item.items);
-      }
-
-      if (item.action) {
-        return {
-          ...item,
-          action: () => {
-            item.action && item.action(item);
-            console.log(item);
-          }
-        };
+        return { ...item, items: mergeItems(item.items) };
       } else {
         return {
           ...item,
           action: () => {
-            console.log(item);
+            item.action && item.action(item);
+            console.log('click');
+            helpers.setValue(item);
           }
         };
       }
@@ -179,15 +170,14 @@ const RdsField: FC<RdsFieldProps> = ({
           disabled={disabled}
           multiple={multiple}
           disableCloseOnSelect={multiple}
+          open
           ListboxComponent={forwardRef(function ListboxComponent(props, ref) {
-            console.log(props);
             return (
               <div ref={ref as ForwardedRef<HTMLDivElement>}>
                 <RdsList items={mergeItems(items)} />
               </div>
             );
           })}
-          open
           renderInput={(params) => (
             <TextField
               {...params}
