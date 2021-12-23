@@ -3,6 +3,8 @@ import { Box, Button, Card, CardContent } from '@material-ui/core';
 import { RdsContainer, RdsField, RdsForm } from '@rdsystem/components';
 import * as Yup from 'yup';
 import { RdsOptionProps } from '@rdsystem/components/RdsField/RdsField.props';
+import useSWR from 'swr';
+import axios from 'axios';
 // import { Marked } from '@components';
 
 const initialValues = {
@@ -57,27 +59,32 @@ interface DateProps {
   completed: boolean;
 }
 
+const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+
 const FormPage = () => {
   const [query, setQuery] = useState('');
+  const [api, setApi] = useState('');
   const [filterOptions, setFilterOptions] = useState<RdsOptionProps[]>([]);
 
+  const { data, error } = useSWR(api, fetcher);
+
+  console.log(data);
+  console.log(error);
+
   useEffect(() => {
-    const getFetch = async () => {
-      const response = await fetch(`https://jsonplaceholder.typicode.com/todos?limit=10&q=${query}`);
-      const data = await response.json();
-
-      if (data.length) {
-        const options = data.slice(0, 10).map((el: DateProps) => ({ key: `${el.id}`, primary: el.title }));
-        setFilterOptions(options);
-      }
-    };
-
     if (query) {
-      getFetch();
+      setApi(`https://jsonplaceholder.typicode.com/todos?&q=${query}`);
     } else {
       setFilterOptions([]);
     }
   }, [query]);
+
+  useEffect(() => {
+    if (data && data.length) {
+      const options = data.slice(0, 10).map((el: DateProps) => ({ key: `${el.id}`, primary: el.title }));
+      setFilterOptions(options);
+    }
+  }, [data]);
 
   return (
     <RdsContainer>
@@ -95,6 +102,7 @@ const FormPage = () => {
               onOptionSelected={(option) => console.log(option)}
               onSearch={(query) => setQuery(query)}
               hideSelectedLabel
+              loading={!data}
             />
             <RdsField
               name="selecteds"
