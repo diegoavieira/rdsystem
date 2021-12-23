@@ -10,7 +10,10 @@ import {
   createStyles,
   makeStyles,
   Checkbox,
-  Chip
+  Chip,
+  CircularProgress,
+  Popper,
+  PopperProps
 } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { AccessTimeOutlined as AccessTimeOutlinedIcon, EventOutlined as EventOutlinedIcon } from '@material-ui/icons';
@@ -39,7 +42,22 @@ const OutlinedInputStyled = makeStyles(
   { name: 'OutlinedInputStyled' }
 );
 
-const useDebounce = (onSearch?: (value: string) => void, delay = 0) => {
+const ListboxStyled = makeStyles(
+  () =>
+    createStyles({
+      listbox: {
+        listStyle: 'none',
+        margin: 0,
+        padding: '8px 0',
+        maxHeight: '40vh'
+      }
+    }),
+  { name: 'ListboxStyled' }
+);
+
+const PopperStyled = (props: PopperProps) => <Popper {...props} style={{ ...props.style, zIndex: 1200 }} />;
+
+const useSearchDebounce = (onSearch?: (value: string) => void, delay = 0) => {
   const timeoutRef = useRef<number | null | NodeJS.Timeout>(null);
 
   const debouncedChange = (value: string) => {
@@ -83,13 +101,13 @@ const RdsField: FC<RdsFieldProps> = ({
   onOptionSelected,
   onSearch,
   loading,
-  searchDelay = 520
+  searchDelay: delay = 520
 }) => {
   const [field, meta, helpers] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
   const [inputValue, setInputValue] = useState('');
 
-  const onSearchDebounce = useDebounce(onSearch, searchDelay);
+  const onSearchDebounce = useSearchDebounce(onSearch, delay);
 
   const RdsOption: FC<RdsOptionProps> = ({ primary, secondary, avatar, icon, selected }) => (
     <>
@@ -217,11 +235,21 @@ const RdsField: FC<RdsFieldProps> = ({
           onBlur={() => helpers.setTouched(true)}
           openText={''}
           clearText={''}
+          closeText={''}
           disabled={disabled}
           multiple={multiple}
           disableCloseOnSelect={multiple}
           noOptionsText={notFoundText}
           loading={loading}
+          loadingText={
+            <CircularProgress
+              size={20}
+              color="inherit"
+              style={{ position: 'relative', left: 'calc(50% - 20px)', top: '3px' }}
+            />
+          }
+          PopperComponent={PopperStyled}
+          ListboxProps={{ className: `${ListboxStyled().listbox} rds-scrollbar-y` }}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -240,7 +268,7 @@ const RdsField: FC<RdsFieldProps> = ({
               placeholder={placeholder || 'Search...'}
             />
           )}
-          renderOption={(option: RdsOptionProps, { selected }) => {
+          renderOption={(option, { selected }) => {
             return <RdsOption {...option} selected={selected} />;
           }}
           renderTags={(value, getTagProps) =>
