@@ -1,5 +1,5 @@
-import { WithStyles } from '@material-ui/core/styles/withStyles';
 import { ReactNode } from 'react';
+import { WithStyles } from '@material-ui/core/styles/withStyles';
 import RdsFieldStyles from './RdsField.styles';
 
 export interface RdsOptionProps {
@@ -12,6 +12,7 @@ export interface RdsOptionProps {
   avatar?: string;
   selected?: boolean;
 }
+
 export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles> {
   /**
    * Name.
@@ -129,4 +130,8 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    * Loading.
    */
   loading?: boolean;
+  /**
+   * Currency.;
+   */
+  currency?: 'BRL' | 'USD';
 }

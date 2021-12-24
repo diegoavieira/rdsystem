@@ -15,7 +15,8 @@ const initialValues = {
   multiline: '',
   number: 2,
   select: null,
-  multiple: [{ key: 'test4', primary: 'Test4' }]
+  multiple: [{ key: 'test4', primary: 'Test4' }],
+  currency: 0
 };
 
 const validationSchema = Yup.object().shape({
@@ -28,7 +29,8 @@ const validationSchema = Yup.object().shape({
     .required('Required'),
   time: Yup.date().nullable().required('Required'),
   select: Yup.object().nullable().required('Required'),
-  multiple: Yup.array().required('Required')
+  multiple: Yup.array().required('Required'),
+  currency: Yup.number().required('Required')
 });
 
 const options: RdsOptionProps[] = [
@@ -121,6 +123,7 @@ const FormPage = () => {
             }}
           >
             <Box display="flex" flexDirection="column" alignItems="start">
+              <RdsField name="currency" currency="BRL" label="Number Currency" margin="0 0 8px 0" width="50%" />
               <RdsField
                 name="select"
                 select

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormikHelpers } from 'formik';
 
 export default interface RdsFormProps<Values> {

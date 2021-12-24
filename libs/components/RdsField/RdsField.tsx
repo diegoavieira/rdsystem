@@ -22,6 +22,7 @@ import MomentUtils from '@date-io/moment';
 import { useField } from 'formik';
 import RdsFieldProps, { RdsOptionProps } from './RdsField.props';
 import RdsFieldStyles from './RdsField.styles';
+import NumberFormat from 'react-number-format';
 
 const OutlinedInputStyled = makeStyles(
   (theme: Theme) =>
@@ -101,7 +102,8 @@ const RdsField: FC<RdsFieldProps> = ({
   onOptionSelected,
   onSearch,
   loading,
-  searchDelay: delay = 520
+  searchDelay: delay = 520,
+  currency
 }) => {
   const [field, meta, helpers] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
@@ -126,9 +128,23 @@ const RdsField: FC<RdsFieldProps> = ({
     </>
   );
 
+  const currencyFormatter = (value: string) => {
+    if (currency === 'BRL') {
+      return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency
+      }).format(Number(value) / 100);
+    } else {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency
+      }).format(Number(value) / 100);
+    }
+  };
+
   return (
     <>
-      {!datepicker && !timepicker && !select && (
+      {!datepicker && !timepicker && !select && !currency && (
         <TextField
           data-testid="rds-field"
           className={classes.root}
@@ -149,6 +165,34 @@ const RdsField: FC<RdsFieldProps> = ({
           maxRows={maxRows}
           placeholder={placeholder}
           {...field}
+        />
+      )}
+      {currency && (
+        <NumberFormat
+          data-testid="rds-field"
+          customInput={TextField}
+          className={classes.root}
+          variant="outlined"
+          size={dense ? 'small' : 'medium'}
+          label={label}
+          type="tel"
+          helperText={hideHelperText ? null : error || helperText}
+          style={{ margin, width }}
+          error={!!error}
+          InputProps={{ classes: OutlinedInputStyled() }}
+          FormHelperTextProps={{ style: { maxWidth: 'fit-content' } }}
+          disabled={disabled}
+          required={required}
+          placeholder={placeholder}
+          format={currencyFormatter}
+          name={field.name}
+          value={field.value}
+          onBlur={field.onBlur}
+          onValueChange={({ floatValue }) => {
+            field.onChange({
+              target: { name, value: floatValue }
+            });
+          }}
         />
       )}
       {datepicker && (
