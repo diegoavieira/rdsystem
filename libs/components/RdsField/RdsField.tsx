@@ -241,13 +241,7 @@ const RdsField: FC<RdsFieldProps> = ({
           disableCloseOnSelect={multiple}
           noOptionsText={notFoundText}
           loading={loading}
-          loadingText={
-            <CircularProgress
-              size={20}
-              color="inherit"
-              style={{ position: 'relative', left: 'calc(50% - 20px)', top: '3px' }}
-            />
-          }
+          loadingText={<CircularProgress size={16} color="inherit" style={{ position: 'relative', top: '2.5px' }} />}
           PopperComponent={PopperStyled}
           ListboxProps={{ className: `${ListboxStyled().listbox} rds-scrollbar-y` }}
           renderInput={(params) => (

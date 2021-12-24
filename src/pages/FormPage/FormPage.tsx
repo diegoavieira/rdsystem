@@ -63,18 +63,13 @@ const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 const FormPage = () => {
   const [query, setQuery] = useState('');
-  const [api, setApi] = useState('');
   const [filterOptions, setFilterOptions] = useState<RdsOptionProps[]>([]);
 
-  const { data, error } = useSWR(api, fetcher);
-
-  console.log(data);
-  console.log(error);
+  const { data, error } = useSWR(query ? `https://jsonplaceholder.typicode.com/todos?&q=${query}` : null, fetcher);
+  const loading = !!(data === undefined && !error);
 
   useEffect(() => {
-    if (query) {
-      setApi(`https://jsonplaceholder.typicode.com/todos?&q=${query}`);
-    } else {
+    if (!query) {
       setFilterOptions([]);
     }
   }, [query]);
@@ -102,7 +97,7 @@ const FormPage = () => {
               onOptionSelected={(option) => console.log(option)}
               onSearch={(query) => setQuery(query)}
               hideSelectedLabel
-              loading={!data}
+              loading={query ? loading : false}
             />
             <RdsField
               name="selecteds"
