@@ -5,7 +5,7 @@ import { Marked } from '@components';
 const InstallComponentsPage = () => {
   return (
     <RdsContainer>
-      <Marked file="src/docs/components/installation/installation.md" />
+      <Marked file="src/docs/install-components/install-components.md" />
     </RdsContainer>
   );
 };
