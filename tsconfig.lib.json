@@ -6,7 +6,7 @@
     "emitDeclarationOnly": true,
     "outDir": "./dist",
     "rootDir": "./libs",
-    "types": ["react"]
+    "types": ["react", "node"]
   },
   "include": ["./libs"],
   "exclude": ["./libs/**/*.spec.tsx"]

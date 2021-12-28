@@ -78,10 +78,11 @@ const Form = () => {
   }, [data]);
 
   return (
-    <Box display="flex" margin="24px auto">
+    <Box display="flex" flexDirection="column" margin="24px auto">
       <RdsForm
         validationSchema={validationSchema}
         initialValues={initialValues}
+        id="formId"
         onSubmit={(values, actions) => {
           console.log(JSON.stringify(values, null, 2));
           console.log(actions);
@@ -151,6 +152,14 @@ const Form = () => {
           <Button type="reset">Reset</Button>
         </Box>
       </RdsForm>
+      <Box display="flex">
+        <Button form="formId" type="submit">
+          Submit ID
+        </Button>
+        <Button form="formId" type="reset">
+          Reset ID
+        </Button>
+      </Box>
     </Box>
   );
 };

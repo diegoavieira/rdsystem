@@ -11,6 +11,10 @@ export default interface RdsFormProps<Values> {
    */
   initialValues: Values;
   /**
+   * Form ID.
+   */
+  id?: string;
+  /**
    * A Yup Schema or a function that returns a Yup schema
    */
   validationSchema?: any | (() => any);

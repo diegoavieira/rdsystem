@@ -25,7 +25,7 @@ describe('<App />', () => {
     expect(screen.getByText(/theme/i)).toBeInTheDocument();
   });
 
-  test('should render page InstallComponents', () => {
+  test('should render page InstallComponentsPage', () => {
     window.history.pushState({}, '', '/components/installation');
 
     render(<App />, { wrapper: BrowserRouter });

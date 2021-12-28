@@ -5,7 +5,14 @@ import RdsFormProps from './RdsForm.props';
 /**
  * [RdsForm Examples](https://diegoavieira.github.io/rdsystem/components/rds-form)
  */
-const RdsForm = <Values,>({ children, validationSchema, initialValues, onSubmit, onReset }: RdsFormProps<Values>) => {
+const RdsForm = <Values,>({
+  children,
+  validationSchema,
+  initialValues,
+  onSubmit,
+  onReset,
+  id
+}: RdsFormProps<Values>) => {
   return (
     <Formik
       data-testid="rds-form"
@@ -14,7 +21,7 @@ const RdsForm = <Values,>({ children, validationSchema, initialValues, onSubmit,
       onSubmit={onSubmit}
       onReset={onReset}
     >
-      <Form autoComplete="off" noValidate>
+      <Form id={id} autoComplete="off" noValidate>
         {children}
       </Form>
     </Formik>
