@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FormikHelpers } from 'formik';
+import { ReactNode } from 'react';
+import { FormikHelpers, FormikProps } from 'formik';
 
 export default interface RdsFormProps<Values> {
   /**
    * Children.
    */
-  children: JSX.Element | JSX.Element[];
+  children: ((props: FormikProps<Values>) => ReactNode) | ReactNode;
   /**
    * Initial values.
    */

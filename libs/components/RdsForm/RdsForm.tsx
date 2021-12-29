@@ -1,18 +1,14 @@
-import { Form, Formik } from 'formik';
-import React from 'react';
+import { Form, Formik, FormikProps } from 'formik';
+import React, { forwardRef, Ref } from 'react';
 import RdsFormProps from './RdsForm.props';
 
 /**
  * [RdsForm Examples](https://diegoavieira.github.io/rdsystem/components/rds-form)
  */
-const RdsForm = <Values,>({
-  children,
-  validationSchema,
-  initialValues,
-  onSubmit,
-  onReset,
-  id
-}: RdsFormProps<Values>) => {
+const RdsForm = <Values,>(
+  { children, validationSchema, initialValues, onSubmit, onReset, id }: RdsFormProps<Values>,
+  ref: Ref<FormikProps<Values>>
+) => {
   return (
     <Formik
       data-testid="rds-form"
@@ -20,12 +16,15 @@ const RdsForm = <Values,>({
       initialValues={initialValues}
       onSubmit={onSubmit}
       onReset={onReset}
+      innerRef={ref}
     >
-      <Form id={id} autoComplete="off" noValidate>
-        {children}
-      </Form>
+      {(props) => (
+        <Form id={id} autoComplete="off" noValidate>
+          {typeof children === 'function' ? children(props) : children}
+        </Form>
+      )}
     </Formik>
   );
 };
 
-export default RdsForm;
+export default forwardRef(RdsForm);
