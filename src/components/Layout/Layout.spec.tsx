@@ -22,7 +22,7 @@ describe('<Layout />', () => {
       </Layout>
     );
 
-    expect(screen.getByTestId('rds-content').className).toContain('Rds-RdsContent-root');
+    expect(screen.getByTestId('rds-content').className).toContain('RdsContent-root');
   });
 
   test('should has rendered in production', () => {
@@ -34,7 +34,7 @@ describe('<Layout />', () => {
       </Layout>
     );
 
-    expect(screen.getByTestId('rds-content').className).toContain('Rds-rds');
+    expect(screen.getByTestId('rds-content').className).toContain('jss');
   });
 
   test('should be mobile', () => {

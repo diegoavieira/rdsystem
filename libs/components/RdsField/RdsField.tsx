@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 import {
   withStyles,
   TextField,
@@ -13,10 +13,21 @@ import {
   Chip,
   CircularProgress,
   Popper,
-  PopperProps
+  PopperProps,
+  InputAdornment,
+  IconButton,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  FormHelperText
 } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
-import { AccessTimeOutlined as AccessTimeOutlinedIcon, EventOutlined as EventOutlinedIcon } from '@material-ui/icons';
+import {
+  AccessTimeOutlined as AccessTimeOutlinedIcon,
+  EventOutlined as EventOutlinedIcon,
+  CloseOutlined as CloseOutlinedIcon,
+  CloudUploadOutlined as CloudUploadOutlinedIcon
+} from '@material-ui/icons';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, KeyboardTimePicker } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import { useField } from 'formik';
@@ -103,11 +114,16 @@ const RdsField: FC<RdsFieldProps> = ({
   onSearch,
   loading,
   searchDelay: delay = 520,
-  currency
+  currency,
+  accept,
+  onFileLoaded
 }) => {
   const [field, meta, helpers] = useField(name);
   const error = meta.touched && meta.error ? meta.error : '';
   const [inputValue, setInputValue] = useState('');
+  const isTypeFile = type === 'file';
+  const [filename, setFilename] = useState('');
+  const labelRef = useRef<HTMLLabelElement>(null);
 
   const onSearchDebounce = useSearchDebounce(onSearch, delay);
 
@@ -142,30 +158,100 @@ const RdsField: FC<RdsFieldProps> = ({
     }
   };
 
+  const onChangeFile = (event: ChangeEvent<HTMLInputElement>) => {
+    const reader = new FileReader();
+    const target = event.target as HTMLInputElement;
+    const file = target.files && target.files[0];
+
+    if (file) {
+      reader.onloadend = (event) => {
+        setFilename(file.name);
+        const value = { data: event.target?.result, type: file.type };
+        helpers.setValue({ ...value });
+        onFileLoaded && onFileLoaded({ ...value });
+      };
+
+      reader.readAsText(file);
+    }
+  };
+
+  const onClearFile = () => {
+    helpers.setValue(null);
+  };
+
+  useEffect(() => {
+    if (isTypeFile && !field.value) {
+      setFilename('');
+    }
+  }, [isTypeFile, field.value]);
+
   return (
     <>
       {!datepicker && !timepicker && !select && !currency && (
-        <TextField
+        <FormControl
           data-testid="rds-field"
           className={classes.root}
           variant="outlined"
           size={dense ? 'small' : 'medium'}
-          label={label}
-          type={type}
-          helperText={hideHelperText ? null : error || helperText}
           style={{ margin, width }}
           error={!!error}
-          InputProps={{ classes: OutlinedInputStyled() }}
-          FormHelperTextProps={{ style: { maxWidth: 'fit-content' } }}
-          inputProps={{ className: 'rds-scrollbar', min }}
           disabled={disabled}
           required={required}
-          multiline={multiline}
-          minRows={minRows}
-          maxRows={maxRows}
-          placeholder={placeholder}
-          {...field}
-        />
+        >
+          <InputLabel
+            htmlFor={name}
+            shrink={isTypeFile ? !!filename : undefined}
+            focused={isTypeFile ? !!filename : undefined}
+            ref={labelRef}
+          >
+            {label}
+          </InputLabel>
+          {isTypeFile && filename && (
+            <InputLabel shrink={false} focused={false}>
+              {filename}
+            </InputLabel>
+          )}
+          <OutlinedInput
+            type={type}
+            id={name}
+            classes={OutlinedInputStyled()}
+            labelWidth={isTypeFile ? (!!filename ? labelRef.current?.offsetWidth : 0) : labelRef.current?.offsetWidth}
+            endAdornment={
+              isTypeFile && (
+                <InputAdornment position="end">
+                  {filename ? (
+                    <IconButton edge="end" onClick={onClearFile}>
+                      <CloseOutlinedIcon />
+                    </IconButton>
+                  ) : (
+                    <IconButton edge="end" component="label" htmlFor={name}>
+                      <CloudUploadOutlinedIcon />
+                    </IconButton>
+                  )}
+                </InputAdornment>
+              )
+            }
+            inputProps={{
+              className: 'rds-scrollbar',
+              min,
+              accept,
+              title: '',
+              style: { opacity: isTypeFile ? 0 : 'initial' },
+              onChange: isTypeFile ? field.onBlur : undefined
+            }}
+            multiline={multiline}
+            minRows={minRows}
+            maxRows={maxRows}
+            placeholder={placeholder}
+            {...field}
+            onBlur={isTypeFile ? undefined : field.onBlur}
+            value={isTypeFile ? undefined : field.value}
+            onChange={isTypeFile ? onChangeFile : field.onChange}
+          />
+          {!hideHelperText && (
+            <FormHelperText style={{ maxWidth: 'fit-content' }}>{error || helperText}</FormHelperText>
+          )}
+        </FormControl>
       )}
       {currency && (
         <NumberFormat

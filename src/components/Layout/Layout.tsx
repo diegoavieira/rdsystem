@@ -50,7 +50,7 @@ const Layout: FC<LayoutProps> = ({ children, drawerNavItems }) => {
 
   return (
     <BrowserRouter basename={production ? '/rdsystem' : '/'}>
-      <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
+      <RdsTheme theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader
             fixed

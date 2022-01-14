@@ -41,7 +41,7 @@ const Layout2 = () => {
 
   return (
     <MemoryRouter>
-      <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
+      <RdsTheme theme={theme}>
         <RdsContent>
           <RdsHeader>
             <RdsTitle type="span" margin="0 auto 0 0">

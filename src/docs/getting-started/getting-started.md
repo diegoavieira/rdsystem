@@ -6,9 +6,6 @@
 "dependencies": {
   "@material-ui/core": "^4.12.2",
   "@material-ui/icons": "^4.11.2",
-  "@material-ui/pickers": "^3.3.10",
-  "@material-ui/lab": "^4.0.0-alpha.60",
-  "moment": "^2.29.1",
   "react": "^17.0.1",
   "react-dom": "^17.0.1"
 }
@@ -25,7 +22,13 @@ Apply the CDNs to the head of **public/index.html**.
 
 ## Locale and Date
 
-Configure location with **moment** library. Apply the snipped in the Layout component.
+Configure location language with **moment** library.
+
+```sh
+npm i moment@2.29.1
+```
+
+Apply the snipped in the Layout component.
 
 ```tsx
 import moment from 'moment';

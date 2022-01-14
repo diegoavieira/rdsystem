@@ -55,6 +55,10 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    */
   type?: 'text' | 'number' | 'file' | 'password' | 'tel' | 'email';
   /**
+   * If type file, choose the accept extensions.
+   */
+  accept?: string;
+  /**
    * Datepicker.
    */
   datepicker?: boolean;
@@ -122,6 +126,10 @@ export default interface RdsFieldProps extends WithStyles<typeof RdsFieldStyles>
    * On search.
    */
   onSearch?: (query: string) => void;
+  /**
+   * On file loaded.
+   */
+  onFileLoaded?: (value?: { data: string | ArrayBuffer | null | undefined; type: string }) => void;
   /**
    * Search delay. Default is 520
    */

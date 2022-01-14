@@ -5,6 +5,14 @@ const RdsTextStyles = () =>
     root: {},
     light: {
       fontWeight: 300
+    },
+    link: {
+      textDecoration: 'none',
+      fontSize: 'inherit',
+      cursor: 'pointer',
+      '&:hover': {
+        textDecoration: 'underline'
+      }
     }
   });
 

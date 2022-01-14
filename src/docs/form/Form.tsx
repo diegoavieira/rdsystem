@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, MouseEvent } from 'react';
 import { Box, Button } from '@material-ui/core';
-import { RdsField, RdsForm } from '@rdsystem/components';
+import { RdsField, RdsForm, RdsMenu, RdsText } from '@rdsystem/components';
 import { RdsOptionProps } from '@rdsystem/components/RdsField/RdsField.props';
+import RdsListItemProps from '@rdsystem/components/RdsListItem/RdsListItem.props';
 import * as Yup from 'yup';
 import useSWR from 'swr';
 import axios from 'axios';
@@ -9,6 +10,7 @@ import axios from 'axios';
 const initialValues = {
   name: '',
   email: '',
+  file: null,
   date: new Date(),
   time: new Date(),
   multiline: '',
@@ -22,6 +24,9 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('Required').min(4, 'Minimum 4 characters'),
   email: Yup.string().email('Format invalid').required('Required'),
+  file: Yup.mixed().test('fileType', 'Unsupported format', (value) =>
+    value ? ['text/plain'].includes(value.type) : true
+  ),
   date: Yup.date()
     .typeError('Format invalid')
     .min(new Date().toDateString(), 'Minimum date is today')
@@ -67,6 +72,27 @@ const Form = () => {
   const { data, error } = useSWR(query ? `https://jsonplaceholder.typicode.com/todos?&q=${query}` : null, fetcher);
   const loading = !!(data === undefined && !error);
 
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const onOpen = (event: MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const onClose = () => {
+    setAnchorEl(null);
+  };
+
+  const items: RdsListItemProps['item'][] = [
+    {
+      key: '1',
+      primary: 'test',
+      action: (item) => {
+        console.log(item);
+        onClose();
+      }
+    }
+  ];
+
   useEffect(() => {
     if (!query) {
       setFilterOptions([]);
@@ -95,6 +121,22 @@ const Form = () => {
         {(props) => (
           <>
             <Box display="flex" flexDirection="column">
+              <RdsField
+                name="file"
+                type="file"
+                label="Choose a file"
+                accept=".txt"
+                margin="0 0 16px 0"
+                helperText={
+                  <RdsMenu document={document} items={items} anchorEl={anchorEl} onClose={onClose}>
+                    <RdsText type="a" color="primary" onClick={onOpen}>
+                      Download
+                    </RdsText>
+                  </RdsMenu>
+                }
+                onFileLoaded={(value) => console.log(value)}
+              />
+
               <RdsField
                 name="filter"
                 required
@@ -132,17 +174,7 @@ const Form = () => {
 
               <RdsField name="name" label="Name" margin="0 0 16px 0" helperText="Helper text" required />
 
-              <RdsField
-                name="email"
-                label="Email"
-                margin="0 0 16px 0"
-                required
-                helperText={
-                  <span>
-                    <a href="#">Helper text click</a>
-                  </span>
-                }
-              />
+              <RdsField name="email" label="Email" margin="0 0 16px 0" required helperText="Helper text" />
 
               <Box display="flex">
                 <RdsField name="date" datepicker label="Date" required minDate={new Date()} margin="0 16px 16px 0" />
@@ -168,7 +200,7 @@ const Form = () => {
         <Button form="formId" type="reset">
           Reset ID
         </Button>
-        <Button onClick={() => formRef.current?.setFieldValue('multiline', 'props.values.name')}>
+        <Button form="formId" onClick={() => formRef.current?.setFieldValue('multiline', 'props.values.name')}>
           Set multiline value
         </Button>
       </Box>

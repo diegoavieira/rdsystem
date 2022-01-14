@@ -7,16 +7,17 @@ import clsx from 'clsx';
 /**
  * [RdsText Examples](https://diegoavieira.github.io/rdsystem/components/rds-text)
  */
-const RdsText: FC<RdsTextProps> = ({ classes, type, children, color, light, align, margin = 0 }) => {
+const RdsText: FC<RdsTextProps> = ({ classes, type, children, color, light, align, margin = 0, onClick }) => {
   return (
     <Typography
       data-testid="rds-text"
-      className={clsx(classes.root, { [classes.light]: light })}
+      className={clsx(classes.root, { [classes.light]: light, [classes.link]: type === 'a' })}
       component={type || 'p'}
       variant="body1"
       color={color}
       align={align}
       style={{ margin }}
+      onClick={onClick && onClick}
     >
       {children}
     </Typography>

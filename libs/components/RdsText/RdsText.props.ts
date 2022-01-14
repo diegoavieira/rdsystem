@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import { WithStyles } from '@material-ui/core/styles/withStyles';
 import RdsTextStyles from './RdsText.styles';
 
@@ -10,7 +10,7 @@ export default interface RdsTextProps extends WithStyles<typeof RdsTextStyles> {
   /**
    * Text type. Default is p.
    */
-  type?: 'p' | 'span';
+  type?: 'p' | 'span' | 'a';
   /**
    * Text weight be 300.
    */
@@ -27,4 +27,8 @@ export default interface RdsTextProps extends WithStyles<typeof RdsTextStyles> {
    * Text align. Default is inherit.
    */
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
+  /**
+   * If type a.
+   */
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }

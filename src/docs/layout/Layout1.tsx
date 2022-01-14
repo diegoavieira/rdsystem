@@ -114,7 +114,7 @@ const Layout1: FC<{ document?: Document }> = ({ document }) => {
 
   return (
     <MemoryRouter>
-      <RdsTheme productionPrefix="rds" seed="Rds" theme={theme}>
+      <RdsTheme theme={theme}>
         <RdsContent hasHeaderFixed hasDrawer>
           <RdsHeader fixed onToggle={onToggle} document={document} toggleTooltip="Toggle open/close drawer">
             <RdsTitle type="span" margin="0 auto 0 0">
