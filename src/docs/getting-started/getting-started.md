@@ -19,3 +19,20 @@ Apply the CDNs to the head of **public/index.html**.
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 ```
+
+## Locale and Date
+
+Configure location language with **moment** library.
+
+```sh
+npm i moment@2.29.1
+```
+
+Apply the snipped in the Layout component.
+
+```tsx
+import moment from 'moment';
+import 'moment/locale/pt-br';
+
+moment.locale('pt-br');
+```

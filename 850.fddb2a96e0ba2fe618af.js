@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrdsystem=self.webpackChunkrdsystem||[]).push([[850],{65850:(e,s,r)=>{r.r(s),r.d(s,{default:()=>u});var t=r(67294),c=r(97260),n=r(15493),l=r(85359);const u=function(){return t.createElement(c.y9,null,t.createElement(n.M2,{file:"src/docs/form/form.md",sandboxes:l.c}))}}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrdsystem=self.webpackChunkrdsystem||[]).push([[765],{46765:(e,t,s)=>{s.r(t),s.d(t,{default:()=>l});var r=s(67294),c=s(97260),n=s(15493);const l=function(){return r.createElement(c.y9,null,r.createElement(n.M2,{file:"src/docs/theme/theme.md"}))}}}]);
