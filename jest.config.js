@@ -26,6 +26,6 @@ module.exports = {
   },
   moduleNameMapper: {
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
-    '\\.(scss|css)$': 'identity-obj-proxy'
+    '.+\\.(scss|css|png|svg|jpe?g)$': 'jest-transform-stub'
   }
 };

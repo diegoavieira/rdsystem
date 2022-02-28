@@ -25,7 +25,8 @@ const RdsDrawer: FC<RdsDrawerProps> = ({ hasHeaderFixed, onToggle, toggle, isMob
       classes={{
         paper: clsx(
           classes.paper,
-          !isMobile && { [classes.open]: toggle, [classes.close]: !toggle, [classes.hasHeaderFixed]: hasHeaderFixed }
+          !isMobile && { [classes.open]: toggle, [classes.close]: !toggle, [classes.hasHeaderFixed]: hasHeaderFixed },
+          'rds-scrollbar-y'
         )
       }}
     >

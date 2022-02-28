@@ -1,6 +1,9 @@
-import LayoutDemo from './Layout';
-import LayoutCode from '!raw-loader!../../../src/docs/layout/Layout';
+import Layout1Demo from './Layout1';
+import Layout1Code from '!raw-loader!../../../src/docs/layout/Layout1';
+import Layout2Demo from './Layout2';
+import Layout2Code from '!raw-loader!../../../src/docs/layout/Layout2';
 
 export default {
-  'Layout.tsx': { demo: LayoutDemo, code: LayoutCode }
+  'Layout1.tsx': { demo: Layout1Demo, code: Layout1Code },
+  'Layout2.tsx': { demo: Layout2Demo, code: Layout2Code }
 };

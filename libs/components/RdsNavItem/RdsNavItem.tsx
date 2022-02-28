@@ -29,7 +29,8 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
   opened,
   onOpen,
   onClose,
-  document
+  document,
+  onToggle
 }) => {
   const history = useHistory();
   const location = useLocation();
@@ -54,6 +55,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
     if (item.path) {
       history.push(item.path);
       onClosePopover();
+      onToggle && onToggle();
     }
 
     onExpand && onExpand(item, !expanded);
@@ -86,7 +88,7 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
 
   const nestedItems = (items: RdsNavItemProps['item'][]) => {
     return (
-      <List disablePadding>
+      <>
         {items.map(
           (item) =>
             !item.hidden && (
@@ -99,10 +101,11 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
                 onExpand={onExpandNested}
                 toggle={toggle}
                 onClose={onClosePopover}
+                onToggle={onToggle}
               />
             )
         )}
-      </List>
+      </>
     );
   };
 
@@ -119,7 +122,17 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
         component="li"
       >
         <ListItemText classes={{ primary: classes.text }} primary={item.title} />
-        {item.items && <ExpandMoreIcon className={clsx(classes.expandIcon, { [classes.expanded]: expanded })} />}
+        {item.items && (
+          <IconButton
+            disableRipple
+            className={clsx(classes.expandIcon, {
+              [classes.expanded]: expanded,
+              [classes.expandIconActived]: actived(item)
+            })}
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        )}
         {item.icon && (
           <ListItemSecondaryAction className={clsx(classes.icon, { [classes.iconButton]: nested === 0 && !toggle })}>
             <Tooltip
@@ -144,11 +157,16 @@ const RdsNavItem: FC<RdsNavItemProps> = ({
       {item.items &&
         (toggle || nested > 0 ? (
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            {nestedItems(item.items)}
+            <List disablePadding>{nestedItems(item.items)}</List>
           </Collapse>
         ) : (
-          <Popover open={!!opened} anchorEl={ref.current} onClose={onClosePopover}>
-            {nestedItems(item.items)}
+          <Popover
+            container={document && document.body}
+            open={!!opened}
+            anchorEl={ref.current}
+            onClose={onClosePopover}
+          >
+            <List>{nestedItems(item.items)}</List>
           </Popover>
         ))}
     </>
