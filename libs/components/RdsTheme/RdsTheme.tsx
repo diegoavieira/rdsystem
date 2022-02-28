@@ -8,9 +8,13 @@ import { createGenerateClassName, createTheme, StylesProvider, ThemeProvider } f
 const RdsTheme: FC<RdsThemeProps> = ({ children, theme, productionPrefix, seed }) => {
   return (
     <ThemeProvider theme={createTheme(theme)}>
-      <StylesProvider generateClassName={createGenerateClassName({ productionPrefix, seed })}>
-        {children}
-      </StylesProvider>
+      {productionPrefix || seed ? (
+        <StylesProvider generateClassName={createGenerateClassName({ productionPrefix, seed })}>
+          {children}
+        </StylesProvider>
+      ) : (
+        children
+      )}
     </ThemeProvider>
   );
 };

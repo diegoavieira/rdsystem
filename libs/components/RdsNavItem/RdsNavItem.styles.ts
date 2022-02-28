@@ -5,7 +5,7 @@ const RdsNavItemStyles = (theme: Theme) =>
     root: {
       minWidth: '240px',
       '&$active, &$active:hover': {
-        color: theme.palette.secondary.main
+        color: theme.palette.primary.main
       },
       '&.has-icon': {
         zIndex: theme.zIndex.modal,
@@ -25,12 +25,15 @@ const RdsNavItemStyles = (theme: Theme) =>
       zIndex: theme.zIndex.modal + 1
     },
     iconActived: {
-      color: alpha(theme.palette.secondary.main, 0.54)
+      color: alpha(theme.palette.primary.main, 0.64)
     },
     text: {},
     active: {},
-    paper: {},
     expandIcon: {
+      padding: 0,
+      '&:hover': {
+        backgroundColor: 'transparent'
+      },
       transform: 'rotate(0deg)',
       transition: theme.transitions.create('transform', {
         duration: theme.transitions.duration.shortest
@@ -38,6 +41,9 @@ const RdsNavItemStyles = (theme: Theme) =>
       '&$expanded': {
         transform: 'rotate(180deg)'
       }
+    },
+    expandIconActived: {
+      color: alpha(theme.palette.primary.main, 0.64)
     },
     expanded: {}
   });

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { WithStyles } from '@material-ui/core/styles/withStyles';
 import RdsHeaderStyles from './RdsHeader.styles';
 
@@ -5,7 +6,7 @@ export default interface RdsHeaderProps extends WithStyles<typeof RdsHeaderStyle
   /**
    * Children.
    */
-  children?: JSX.Element;
+  children?: JSX.Element | JSX.Element[];
   /**
    * Fixed at the top.
    */
@@ -18,4 +19,12 @@ export default interface RdsHeaderProps extends WithStyles<typeof RdsHeaderStyle
    * Show menu button and toggle RdsDrawer.
    */
   onToggle?: () => void;
+  /**
+   * Document.
+   */
+  document?: Document;
+  /**
+   * Toggle tooltip.
+   */
+  toggleTooltip?: ReactNode;
 }

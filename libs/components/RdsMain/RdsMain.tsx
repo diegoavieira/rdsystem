@@ -9,7 +9,7 @@ import clsx from 'clsx';
  */
 const RdsMain: FC<RdsMainProps> = ({ children, fixed, classes }) => {
   return (
-    <main data-testid="rds-main" className={clsx(classes.root, { [classes.fixed]: fixed })}>
+    <main data-testid="rds-main" className={clsx(classes.root, { [classes.fixed]: fixed, 'rds-scrollbar': fixed })}>
       {children}
     </main>
   );

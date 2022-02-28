@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react';
-import { Card, IconButton, Collapse, Toolbar, withStyles, Tooltip } from '@material-ui/core';
+import { Card, Collapse, Toolbar, withStyles } from '@material-ui/core';
 import { Code as CodeIcon } from '@material-ui/icons';
 import SandboxProps from './Sandbox.props';
 import SandboxStyles from './Sandbox.styles';
+import { RdsIconButton } from '@rdsystem/components';
 import { Frame } from '@components';
 import clsx from 'clsx';
 
@@ -15,11 +16,9 @@ const Sandbox: FC<SandboxProps> = ({ demo, code, bg, frame, classes }) => {
         {frame ? <Frame>{demo}</Frame> : demo}
       </Card>
       <Toolbar className={classes.toolbar} variant="dense">
-        <Tooltip arrow title="Code">
-          <IconButton onClick={() => setExpanded(!expanded)}>
-            <CodeIcon />
-          </IconButton>
-        </Tooltip>
+        <RdsIconButton onClick={() => setExpanded(!expanded)} tooltip="Toggle open/close code">
+          <CodeIcon />
+        </RdsIconButton>
       </Toolbar>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <div className={classes.code}>{code}</div>

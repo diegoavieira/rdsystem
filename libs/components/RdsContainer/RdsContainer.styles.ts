@@ -4,10 +4,7 @@ const RdsContainerStyles = (theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      padding: theme.spacing(2),
-      [theme.breakpoints.up('sm')]: {
-        padding: theme.spacing(3)
-      }
+      padding: theme.spacing(2)
     },
     disableGutters: {
       padding: 0

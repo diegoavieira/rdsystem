@@ -18,7 +18,14 @@ describe('<App />', () => {
     expect(screen.getByText(/layout/i)).toBeInTheDocument();
   });
 
-  test('should render page InstallComponents', () => {
+  test('should render page ThemePage', () => {
+    window.history.pushState({}, '', '/theme');
+
+    render(<App />, { wrapper: BrowserRouter });
+    expect(screen.getByText(/theme/i)).toBeInTheDocument();
+  });
+
+  test('should render page InstallComponentsPage', () => {
     window.history.pushState({}, '', '/components/installation');
 
     render(<App />, { wrapper: BrowserRouter });

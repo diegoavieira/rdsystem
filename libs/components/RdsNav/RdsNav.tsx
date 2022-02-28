@@ -14,7 +14,8 @@ const RdsNav: FC<RdsNavProps> = ({
   RdsNavItemComponent = RdsNavItem,
   toggle,
   nested = 0,
-  document
+  document,
+  onToggle
 }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
   const [opened, setOpened] = useState<string | false>(false);
@@ -64,6 +65,7 @@ const RdsNav: FC<RdsNavProps> = ({
                         opened={item.key === opened}
                         onOpen={onOpen}
                         onClose={onClose}
+                        onToggle={onToggle}
                       />
                     )
                 )}
