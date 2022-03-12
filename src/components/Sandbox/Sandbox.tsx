@@ -21,7 +21,7 @@ const Sandbox: FC<SandboxProps> = ({ demo, code, bg, frame, classes }) => {
         </RdsIconButton>
       </Toolbar>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <div className={classes.code}>{code}</div>
+        <div className={`${classes.code} rds-scrollbar`}>{code}</div>
       </Collapse>
     </div>
   );

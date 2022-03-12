@@ -25,7 +25,8 @@ const MarkedStyles = (theme: Theme) =>
         tableLayout: 'fixed',
         '& code.hljs': {
           padding: theme.spacing(2),
-          borderRadius: theme.shape.borderRadius
+          borderRadius: theme.shape.borderRadius,
+          display: 'table-caption'
         }
       },
       '& a': {
